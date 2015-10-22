@@ -157,7 +157,14 @@ class ProductDetailView(DetailView):
         context['url_path'] = 'product'
         return context
 
-class ContactView(CreateView):
-    model = models.Contact
+class ContactView(FormView):
+    form_class = forms.ContactForm
     template_name = "contact.html"
-    fields = ['sender', 'mobile', 'email', 'title', 'content']
+
+    def form_invalid(self, form):
+        print 'asdsad'
+        print form.errors
+
+    def form_valid(self, form):
+        print self.kwargs['company_url']
+
