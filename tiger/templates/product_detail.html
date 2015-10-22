@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="breadcrumb-wrap">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <h4>{{product.name}}</h4>
+      </div>
+      <div class="col-sm-6 hidden-xs text-right">
+        <ol class="breadcrumb">
+          <li><a href="{% url 'home' %}">HOME</a></li>
+          <li><a href="{% url 'company-detail' {{product.company.url}}">{{product.company.name}}</a></li>
+          <li>{{product.name}}</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divide80"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div id="testi-carousel" class="owl-carousel owl-spaced">
+        <div>
+          <img src="/static/img/showcase-1.jpg" class="img-responsive" alt="">
+        </div>
+        <div>
+          <img src="/static/img/showcase-2.jpg" class="img-responsive" alt="">
+        </div>
+        <div>
+          <img src="/static/img/showcase-3.jpg" class="img-responsive" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--img slide row-->
+  <div class="divide35"></div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="project-detail">
+        <h3>{{product.name}}</h3>
+        <em>{{product.create_date}}</em>
+        <hr>
+        <p>
+        {{product.description}}
+        </p>
+        <hr>
+        <p><a href="javascript:window.history.back();" class="btn btn-lg btn-theme-bg">Back</a></p>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="divide60"></div>
+{% endblock %}

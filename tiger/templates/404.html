@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="breadcrumb-wrap">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <h4>Page is not found</h4>
+      </div>
+      <div class="col-sm-6 hidden-xs text-right">
+        <ol class="breadcrumb">
+          <li><a href="index.html">Home</a></li>
+          <li>404</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="divide80"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center error-text">
+      <div class="divide30"></div>
+      <h1 class="error-digit wow animated fadeInUp margin20 animated" style="visibility: visible; animation-name: fadeInUp;"><i class="fa fa-thumbs-down"></i></h1>
+      <h2>Opps, the page could not be found!</h2>
+      <p><a href="javascript:window.history.back();" class="btn border-black btn-lg">Go Back</a></p>
+    </div>
+  </div>
+</div>
+<div class="divide60"></div>
+{% endblock %}
+

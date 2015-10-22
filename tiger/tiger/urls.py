@@ -1,12 +1,12 @@
 from django.conf.urls import patterns, include, url
 
-from django.contrib import admin
-admin.autodiscover()
+from views import *
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'tiger.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^index$', IndexView.as_view(), name='home'),
+    url(r'^business/(?P<company_name>\w+)$', CompanyDetailView.as_view(), name='company-detail'),
+    url(r'^business$', CompanyListView.as_view(), name='company-list'),
+    url(r'^products$', ProductListView.as_view(), name='product-list'),
+    url(r'^product/(?P<pk>\d+)$', ProductDetailView.as_view(), name='product-detail'),
+    url(r'^contact$', ContactView.as_view(), name='contact-add'),
 )

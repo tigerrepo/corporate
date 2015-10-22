@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="breadcrumb-wrap">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <h4>Corporate List</h4>
+      </div>
+      <div class="col-sm-6 hidden-xs text-right">
+        <ol class="breadcrumb">
+          <li><a href="index.html">Home</a></li>
+          <li>Corporate List</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!--breadcrumbs-->
+<div class="divide80"></div>
+<div class="container">
+  <div class="portfolio-cube">
+    <div id="filters-container" class="cbp-l-filters-button">
+      <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">
+        All 
+        <div class="cbp-filter-counter"></div>
+      </div>
+      {% for tag in tags %}
+      <div data-filter=".{{tag.name}}" class="cbp-filter-item">
+        {{tag.name}} 
+        <div class="cbp-filter-counter"></div>
+      </div>
+      {% endfor %}
+    </div>
+    {% include "company_list.html" %}
+  </div>
+</div>
+<div class="divide80"></div>
+
+{% endblock %}

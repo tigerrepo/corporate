@@ -20,29 +20,30 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'b8y&pvt)jkiuh%9l#lmowl@ysz(^e79j6c2r&ou$eyk556f0kr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+import datetime
+
 DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.riceglobal.com']
 
+COUNTRY = 'SG'
 
 # Application definition
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
-    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tiger',
 )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -54,20 +55,44 @@ WSGI_APPLICATION = 'tiger.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'corporate',
+        'USER': 'root',
+        'PASSWORD' : '123456',
+        'HOST':'',
+        'PORT':3306,
     }
 }
+
+STATIC_URL = '/static/'
+DOMAIN_NAME = 'http://www.riceglobal.com/'
+IMAGE_URL_PREFIX = 'http://cdn.riceglobal.com/gallery/'
+MEDIA_ROOT = '/var/www/cdn.riceglobal.com/gallery/'
+MEDIA_URL = '%s' % IMAGE_URL_PREFIX
+PDF_URL = 'http://cdn.riceglobal.com/pdf/'
+VIDEO_URL = 'http://cdn.riceglobal.com/video/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+    os.path.join(MEDIA_ROOT, "static"),
+)
+
+TEMPLATE_DIRS = (
+    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+
+    os.path.join(BASE_DIR, 'templates'),
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Singapore'
 
 USE_I18N = True
 
@@ -75,8 +100,39 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+
+    'formatters': {
+        'standard': {
+            'format': '%(asctime)s|%(levelname)s|%(process)d:%(thread)d|%(filename)s:%(lineno)d|%(module)s.%(funcName)s|%(message)s',
+        },
+        'short' : {
+            'format': '%(asctime)s|%(levelname)s|%(message)s',
+        }
+    },
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': '/var/log/riceglobal/web.log.%s' % (datetime.datetime.now().date(),),
+            'formatter':'standard',
+        },
+    },
+    'loggers': {
+        'main': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_URL = '/static/'
+
+PAGE_COUNT = 3
+YOUTUBE_URL_PREFIX = 'http://www.youtube.com/embed/'

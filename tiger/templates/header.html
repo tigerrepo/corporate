@@ -1,26 +1,22 @@
 <div class="navbar navbar-default navbar-static-top yamm sticky" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="Rice Global"></a>
+      <a class="navbar-brand" href="{% url 'home' %}"><img src="/static/img/logo.png" alt="Rice Global"></a>
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown active ">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home </a>
+        <li {% ifequal 'index' url_path %} class="active" {%endifequal%}>
+        <a href="{% url 'home' %}" >Home </a>
         </li>
         <!--menu home li end here-->
-        <li class="dropdown">
-        <a href="#" class="dropdown-toggle " data-toggle="dropdown">Corporates </a>
+        <li {% ifequal 'business' url_path %} class="active" {%endifequal%}>
+        <a href="{% url 'company-list' %}" >Corporates </a>
         </li>
         <!--menu Portfolio li end here-->
-        <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products </a>
+        <li {% ifequal 'product' url_path %} class="active" {%endifequal%}>
+        <a href="{% url 'product-list' %}" >Products </a>
         </li>
-        <!--menu blog li end here-->
-        <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contact </a>
-        </li>
-        <li class="dropdown">
+        <li>
         <div class="pull-right">
           <form>
             <div class="form-group">

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="breadcrumb-wrap">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <h4>Product List</h4>
+      </div>
+      <div class="col-sm-6 hidden-xs text-right">
+        <ol class="breadcrumb">
+          <li><a href="index.html">Home</a></li>
+          <li>Product List</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!--breadcrumbs-->
+<div class="divide80"></div>
+<div class="container">
+  <div class="portfolio-cube">
+    <div id="filters-container" class="cbp-l-filters-button">
+    </div>
+    {% include "product_list.html" %}
+  </div>
+  <div class="divide20"></div>
+  <div class="row gallery-bottom">
+    <div class="col-sm-6">
+      <ul class="pagination">
+        {% if products.has_previous %}
+        <li>
+        <a href="#" aria-label="Previous">
+          <span aria-hidden="true"><</span>
+        </a>
+        </li>
+        {% endif %}
+        {% for index in products.paginator.page_range %}
+        <li class="{% ifequal index products.number%} active {%endifequal%}"><a href="?page={{index}}">{{index}}</a></li>
+        {% endfor %}
+        {% if products.has_next %}
+        <li>
+        <a href="#" aria-label="Next">
+          <span aria-hidden="true">></span>
+        </a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+    <div class="col-sm-6 text-right">
+      <em>Displaying page {{products.number}} of {{products.paginator.num_pages}}</em>
+    </div>
+  </div>
+</div>
+</div>
+<div class="divide80"></div>
+{% endblock %}

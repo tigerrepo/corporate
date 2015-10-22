@@ -20,6 +20,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'b8y&pvt)jkiuh%9l#lmowl@ysz(^e79j6c2r&ou$eyk556f0kr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+import datetime
+
 DEBUG = True
 
 TEMPLATE_DEBUG = True
@@ -35,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tiger',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -128,4 +131,5 @@ LOGGING = {
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-
+PAGE_COUNT = 3
+YOUTUBE_URL_PREFIX = 'http://www.youtube.com/embed/'

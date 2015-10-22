@@ -1801,7 +1801,7 @@ h3.heading-progress {
 }
 
 .news-desc span + span {
-  padding-left: 30px;
+  float:right;
 }
 
 /*latest news in home option*/
