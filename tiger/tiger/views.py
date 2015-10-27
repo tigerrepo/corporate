@@ -1,16 +1,17 @@
-from django.views.generic import TemplateView
-from django.shortcuts import render, get_object_or_404, Http404
-from django.core.urlresolvers import reverse
-from django.shortcuts import redirect
-from tiger import models
-from tiger import forms
-from django.utils.timezone import now, localtime
-from tiger import settings
-from django.views.generic.edit import CreateView
-from django.views.generic.detail import DetailView
 import collections
+
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.core.urlresolvers import reverse
 from django.forms.models import model_to_dict
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http import HttpResponse
+from django.shortcuts import Http404, get_object_or_404, redirect, render
+from django.utils.timezone import localtime, now
+from django.views.generic import TemplateView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, FormView
+
+from tiger import forms, models, settings
+
 
 class IndexView(TemplateView):
     template_name = "index.html"
@@ -161,10 +162,8 @@ class ContactView(FormView):
     form_class = forms.ContactForm
     template_name = "contact.html"
 
-    def form_invalid(self, form):
-        print 'asdsad'
-        print form.errors
-
     def form_valid(self, form):
-        print self.kwargs['company_url']
-
+        print form.cleaned_data
+        form.instance.company_id = form.cleaned_data['company_id']
+        form.save()
+        return HttpResponse("OK")
