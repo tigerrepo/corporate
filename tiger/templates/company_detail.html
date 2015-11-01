@@ -8,7 +8,7 @@
       </div>
       <div class="col-sm-6 hidden-xs text-right">
         <ol class="breadcrumb">
-          <li><a href="index.html">Home</a></li>
+          <li><a href="{% url 'home' %}">Home</a></li>
           <li>{{company.name}}</li>
         </ol>
       </div>
@@ -18,23 +18,34 @@
 <!--breadcrumbs-->
 <div class="divide80"></div>
 <div class="container">
-  <div class="corporate-video">
-    <video id="my-video" class="video-js" controls preload="auto" width="640" height="264"
-      poster="{{poster_url}}" data-setup="{}">
-      <source src="{{video_url}}" type='video/mp4'>
-      <p class="vjs-no-js">
-      To view this video please enable JavaScript, and consider upgrading to a web browser that
-      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-      </p>
-    </video>
+  <div class="row">
+    <div class="corporate-video">
+      <video id="my-video" class="video-js" controls preload="auto" width="640" height="264"
+        poster="{{poster_url}}" data-setup="{}">
+        <source src="{{video_url}}" type='video/mp4'>
+        <p class="vjs-no-js">
+        To view this video please enable JavaScript, and consider upgrading to a web browser that
+        <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </p>
+      </video>
+    </div>
   </div>
-
-  <div class="portfolio-cube">
-    <div id="filters-container" class="cbp-l-filters-button">
-    </div> 
-    {% include "product_list.html" %}
+  <div class="divide60"></div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="center-heading">
+        <h2>Product List</h2>
+        <span class="center-line"></span>
+      </div>
+    </div>
   </div>
-
+  <div class="row">
+    <div class="portfolio-cube">
+      <div id="filters-container" class="cbp-l-filters-button">
+      </div> 
+      {% include "product_list.html" %}
+    </div>
+  </div>
 </div>
 </div>
 <div class="divide60"></div>

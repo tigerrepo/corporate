@@ -34,7 +34,8 @@ class IndexView(TemplateView):
             company_dict['video_host_url'] = "%s%s" % (settings.VIDEO_URL, video_tuple[0])
             company_dict['youtube_url'] = "%s%s" % (settings.YOUTUBE_URL_PREFIX, video_tuple[2])
             company_dict['video_url'] = video_tuple[1]
-            company_dict['poster_url'] = "%s%s/%s.jpg" % (settings.VIDEO_URL, company.id, company.id)
+            # company_dict['video_url'] = "%s%s/%s.mp4" % (settings.VIDEO_URL, company.id, company.id)
+            # company_dict['poster_url'] = "%s%s/%s.jpg" % (settings.VIDEO_URL, company.id, company.id)
             company_list.append(company_dict)
 
         products = models.Product.objects.filter(status=1).order_by("-id")[0:3]
@@ -98,13 +99,20 @@ class CompanyListView(TemplateView):
         for item in models.CompanyTag.objects.filter():
             company_tag_dict[item.company_id].append(item.tag.name)
 
+        company_video_dict = {}
+        for video in models.Video.objects.all():
+            company_video_dict[video.company_id] = (video.host_url, video.video_url, video.name)
+
         tags = models.Tag.objects.filter(status=1)
         companies = models.Company.objects.filter(status=1)
         company_list = []
         for company in companies:
             company_dict = model_to_dict(company)
             company_dict['tag_list'] = ' '.join(company_tag_dict.get(company.id, ['Others']))
-            company_dict['video_url'] = "%s%s/%s.mp4" % (settings.VIDEO_URL, company.id, company.id)
+            video_tuple = company_video_dict.get(company.id, ('','', ''))
+            company_dict['video_host_url'] = "%s%s" % (settings.VIDEO_URL, video_tuple[0])
+            company_dict['youtube_url'] = "%s%s" % (settings.YOUTUBE_URL_PREFIX, video_tuple[2])
+            company_dict['video_url'] = video_tuple[1]
             company_dict['poster_url'] = "%s%s/%s.jpg" % (settings.VIDEO_URL, company.id, company.id)
             company_list.append(company_dict)
 
