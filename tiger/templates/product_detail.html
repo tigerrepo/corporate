@@ -23,15 +23,11 @@
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
       <div id="testi-carousel" class="owl-carousel owl-spaced">
+        {% for gallery in galleries %}
         <div>
-          <img src="/static/img/showcase-1.jpg" class="img-responsive" alt="">
+          <img src="{{ gallery.image_url }}" class="img-responsive" alt="">
         </div>
-        <div>
-          <img src="/static/img/showcase-2.jpg" class="img-responsive" alt="">
-        </div>
-        <div>
-          <img src="/static/img/showcase-3.jpg" class="img-responsive" alt="">
-        </div>
+        {% endfor %}
       </div>
     </div>
   </div>

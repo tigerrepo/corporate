@@ -44,7 +44,7 @@ class IndexView(TemplateView):
             product_dict = model_to_dict(product)
             try:
                 gallery = models.Gallery.objects.get(product=product, is_cover=1)
-                cover_image = "%s%s" % (settings.IMAGE_URL_PREFIX, gallery.image_url)
+                cover_image = "%s%s/%s" % (settings.IMAGE_URL_PREFIX, gallery.id, gallery.image_url)
             except models.Gallery.DoesNotExist:
                 cover_image = '%sdefault.jpg' % settings.IMAGE_URL_PREFIX
             product_dict['cover_image'] = cover_image
@@ -135,7 +135,7 @@ class ProductListView(TemplateView):
         for product in products:
             product_dict = model_to_dict(product)
             if product.id in product_cover_image:
-                cover_image = "%s%s" % (settings.IMAGE_URL_PREFIX, product_cover_image[product.id])
+                cover_image = "%s%s/%s" % (settings.IMAGE_URL_PREFIX, product.id, product_cover_image[product.id])
             else:
                 cover_image = '%sdefault.jpg' % settings.IMAGE_URL_PREFIX
             product_dict['cover_image'] = cover_image
@@ -163,7 +163,14 @@ class ProductDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(ProductDetailView, self).get_context_data(**kwargs)
 
+        galleries =  models.Gallery.objects.filter(product=self.object)
+        gallery_list = []
+        for gallery in galleries:
+            d = model_to_dict(gallery)
+            d['image_url'] = '%s%s/%s' % (settings.IMAGE_URL_PREFIX, self.object.id, gallery.image_url)
+            gallery_list.append(d)
         context['url_path'] = 'product'
+        context['galleries'] = gallery_list
         return context
 
 class ContactView(FormView):
