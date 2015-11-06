@@ -1,3 +1,4 @@
+{% load i18n %}
 <div class="navbar navbar-default navbar-static-top yamm sticky" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -6,15 +7,15 @@
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li {% ifequal 'index' url_path %} class="active" {%endifequal%}>
-        <a href="{% url 'home' %}" >Home </a>
+        <a href="{% url 'home' %}" >{% trans "Home" %} </a>
         </li>
         <!--menu home li end here-->
         <li {% ifequal 'business' url_path %} class="active" {%endifequal%}>
-        <a href="{% url 'company-list' %}" >Corporates </a>
+        <a href="{% url 'company-list' %}" >{% trans "Corporates" %} </a>
         </li>
         <!--menu Portfolio li end here-->
         <li {% ifequal 'product' url_path %} class="active" {%endifequal%}>
-        <a href="{% url 'product-list' %}" >Products </a>
+        <a href="{% url 'product-list' %}" >{% trans "Products" %} </a>
         </li>
         <li>
         <div class="pull-right">
