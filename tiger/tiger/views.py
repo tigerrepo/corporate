@@ -178,10 +178,15 @@ class ContactView(FormView):
     template_name = "contact.html"
 
     def form_valid(self, form):
-        print form.cleaned_data
         form.instance.company_id = form.cleaned_data['company_id']
         form.save()
         return HttpResponse("OK")
 
 class PriceView(TemplateView):
     template_name = "pricing.html"
+
+class SearchView(FormView):
+    form_class = forms.SearchForm
+    template_name = "search.html"
+
+

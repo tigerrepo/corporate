@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="breadcrumb-wrap">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <h4>Search</h4>
+      </div>
+      <div class="col-sm-6 hidden-xs text-right">
+        <ol class="breadcrumb">
+          <li><a href='{% url "home" %}'>Home</a></li>
+          <li>Search</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!--breadcrumbs-->
+<div class="search-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5">
+        <form action='{% url "search" %}' method="post">
+        <div class="input-group">
+          <input type="text" class="form-control" name="keyword" placeholder="Search here ...">
+          <span class="input-group-btn">
+            <button class="btn btn-theme-bg btn-lg" type="submit"><i class="fa fa-search"></i></button>
+          </span>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="divide80"></div>
+
+{% endblock %}

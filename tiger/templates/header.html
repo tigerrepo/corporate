@@ -20,18 +20,22 @@
         <li {% ifequal 'price' url_path %} class="active" {%endifequal%}>
         <a href="{% url 'price-detail' %}" >{% trans "Pricing" %} </a>
         </li>
+        <li {% ifequal 'search' url_path %} class="active" {%endifequal%}>
+        <a href="{% url 'search' %}" >{% trans "Search" %} </a>
+        </li>
+        {% ifequal 'index' url_path %}
         <li>
         <div class="pull-right">
-          <form>
+          <form action='{% url "search" %}' method="post" novalidate="" >
+            {% csrf_token %}
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="search...">
-              <button type="button"><i class="fa fa-search"></i></button>
+              <input name="keyword" type="text" class="form-control" placeholder="search..." id="id_keyword">
+              <button type="submit"><i class="fa fa-search"></i></button>
             </div>
-            <!--input group-->
           </form>
-          <!--form-->
         </div>
         </li>
+        {% endifequal %}
       </ul>
     </div>
     <!--/.nav-collapse -->

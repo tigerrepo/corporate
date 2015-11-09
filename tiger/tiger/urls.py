@@ -11,4 +11,5 @@ urlpatterns = patterns('',
     url(r'^product/(?P<pk>\d+)$', ProductDetailView.as_view(), name='product-detail'),
     url(r'^contact$', csrf_exempt(ContactView.as_view()), name='contact-add'),
     url(r'^price$', PriceView.as_view(), name='price-detail'),
+    url(r'^search$', SearchView.as_view(), name='search'),
 )
