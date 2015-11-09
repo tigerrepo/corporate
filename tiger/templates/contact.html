@@ -1,7 +1,9 @@
+{% load i18n %}
 <div class="container">
   <div class="row">
     <div class="col-md-8 margin30">
       <h3 class="heading">{% trans "Contact us" %}</h3>
+      <h5>{{company.slogan}}</h5>
       <p>{{company.description}}</p>
       <div class="divide30"></div>
       <div class="form-contact">
@@ -72,6 +74,9 @@
         <li><p><strong><i class="fa fa-envelope"></i> {% trans "Mail Us:" %}</strong> <a href="#">Support@designmylife.com</a></p></li>
         <li> <p><strong><i class="fa fa-phone"></i> {% trans "Phone:" %}</strong> +91 1800 2345 2132</p></li>
         <li> <p><strong><i class="fa fa-print"></i>{% trans "Fax:" %}</strong> +91 2345 2132</p></li>
+        {% if company.pdf_url != "" %}
+        <li> <p><strong><i class="fa fa-download"></i>{% trans "PDF:" %}</strong> <a href={{pdf_url}}>Download</a></li>
+        {% endif %}
       </ul>
       <div class="divide40"></div>
       <!--<h4>Get social</h4>-->

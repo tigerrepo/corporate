@@ -146,10 +146,10 @@ LOGGING = {
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 
-PAGE_COUNT = 3
+PAGE_COUNT = 15
 YOUTUBE_URL_PREFIX = 'http://www.youtube.com/embed/'
 
-LANGUAGE_CODE = 'en'
+#LANGUAGE_CODE = 'en'
 LANGUAGES = (
   ('en', 'English'),
   ('zh_CN', 'Chinese'),

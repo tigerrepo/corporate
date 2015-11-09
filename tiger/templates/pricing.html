@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="breadcrumb-wrap">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <h4>Package List</h4>
+      </div>
+      <div class="col-sm-6 hidden-xs text-right">
+        <ol class="breadcrumb">
+          <li><a href='{% url "home" %}'>Home</a></li>
+          <li>Package List</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divide80"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 margin20 wow animated fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
+      <div class="price-wrap">
+        <div class="price-title">
+          <h4>Basic</h4>
+        </div><!--price title-->
+        <div class="price-price">
+          $19.99
+          <span>Per Month</span>
+        </div><!--price price-->
+        <div class="price-features">
+          <ul class="list-unstyled">
+            <li>Full Support</li>
+            <li>1 Company Website</li>
+            <li>1 year validity</li>
+            <li>Phone / email support</li>
+          </ul>
+        </div><!--price features-->
+        <div class="price-action">
+          <!--<a href="#" class="btn btn-theme-dark">Choose plan</a>-->
+        </div><!--price action-->
+      </div><!--price-wrap-->                   
+    </div><!--price col-->
+    <div class="col-md-4 margin20 wow animated fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
+      <div class="price-wrap">
+        <div class="price-title">
+          <h4>Business</h4>
+        </div><!--price title-->
+        <div class="price-price popular">
+          $39.99
+          <span>Per Month</span>
+        </div><!--price price-->
+        <div class="price-features">
+          <ul class="list-unstyled">
+            <li>Full Support</li>
+            <li>3 Company Website</li>
+            <li>1 year validity</li>
+            <li>Phone / email support</li>
+          </ul>
+        </div><!--price features-->
+        <div class="price-action">
+          <!--<a href="#" class="btn btn-theme-bg">Choose plan</a>-->
+        </div><!--price action-->
+      </div><!--price-wrap-->                   
+    </div><!--price col-->
+    <div class="col-md-4 margin20 wow animated fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
+      <div class="price-wrap">
+        <div class="price-title">
+          <h4>Professional</h4>
+        </div><!--price title-->
+        <div class="price-price">
+          $59.99
+          <span>Per Month</span>
+        </div><!--price price-->
+        <div class="price-features">
+          <ul class="list-unstyled">
+            <li>Full Support</li>
+            <li>Unlimited Company Website</li>
+            <li>Show in Homepage</li>
+            <li>1 year validity</li>
+            <li>Phone / email support</li>
+          </ul>
+        </div><!--price features-->
+        <div class="price-action">
+          <!--<a href="#" class="btn btn-theme-dark">Choose plan</a>-->
+        </div><!--price action-->
+      </div><!--price-wrap-->                   
+    </div><!--price col-->
+
+  </div><!--row for 3 col-->
+</div>
+<div class="divide80"></div>
+  {% endblock %}

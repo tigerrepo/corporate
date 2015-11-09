@@ -19,7 +19,7 @@ msgstr ""
 
 #: templates/header.html:9
 msgid "Home"
-msgstr "asdas"
+msgstr ""
 
 #: templates/header.html:13
 msgid "Corporates"

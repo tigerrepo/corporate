@@ -17,6 +17,9 @@
         <li {% ifequal 'product' url_path %} class="active" {%endifequal%}>
         <a href="{% url 'product-list' %}" >{% trans "Products" %} </a>
         </li>
+        <li {% ifequal 'price' url_path %} class="active" {%endifequal%}>
+        <a href="{% url 'price-detail' %}" >{% trans "Pricing" %} </a>
+        </li>
         <li>
         <div class="pull-right">
           <form>

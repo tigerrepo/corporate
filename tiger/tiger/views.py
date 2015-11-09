@@ -70,7 +70,7 @@ class CompanyDetailView(TemplateView):
         context['company'] = company
         context['video_url'] = "%s%s/%s.mp4" % (settings.VIDEO_URL, company.id, company.id)
         context['poster_url'] = "%s%s/%s.jpg" % (settings.VIDEO_URL, company.id, company.id)
-
+        context['pdf_url'] = "%s%s/%s" % (settings.PDF_URL, company.id, company.pdf_url)
         products = models.Product.objects.filter(company=company, status=1)
         product_list = []
         for product in products:
@@ -182,3 +182,6 @@ class ContactView(FormView):
         form.instance.company_id = form.cleaned_data['company_id']
         form.save()
         return HttpResponse("OK")
+
+class PriceView(TemplateView):
+    template_name = "pricing.html"
