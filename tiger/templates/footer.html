@@ -1,11 +1,12 @@
+{% load i18n %}
 <footer id="footer">
   <div class="container">
     <div class="row">
-      <div class="col-md-4 col-sm-8 margin30">
+      <div class="col-md-8 col-sm-8 margin30">
         <div class="footer-col">
-          <h3>About Rice Global</h3>
+          <h3>{% trans "About Rice Global" %}</h3>
           <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis. Pellentesque cursus arcu id magna euismod in elementum purus molestie.
+          {% trans "LLorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,orem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis. Pellentesque cursus arcu id magna euismod in elementum purus molestie." %}
           </p>
           <!-- <ul class="list-inline social-1">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -17,45 +18,45 @@
         </div>
       </div>
       <!--footer col-->
-      <div class="col-md-4 col-sm-8 margin30">
-        <div class="footer-col">
-          <h3>Featured Work</h3>
-          <ul class="list-inline f2-work">
-            <li><a href="portfolio-single.html"><img src="/static/img/img-1.jpg" class="img-responsive" alt=""></a></li>
-            <li><a href="portfolio-single.html"><img src="/static/img/img-2.jpg" class="img-responsive" alt=""></a></li>
-            <li><a href="portfolio-single.html"><img src="/static/img/img-3.jpg" class="img-responsive" alt=""></a></li>
-            <li><a href="portfolio-single.html"><img src="/static/img/img-4.jpg" class="img-responsive" alt=""></a></li>
-            <li><a href="portfolio-single.html"><img src="/static/img/img-5.jpg" class="img-responsive" alt=""></a></li>
-            <li><a href="portfolio-single.html"><img src="/static/img/img-6.jpg" class="img-responsive" alt=""></a></li>
-            <li><a href="portfolio-single.html"><img src="/static/img/img-7.jpg" class="img-responsive" alt=""></a></li>
-            <li><a href="portfolio-single.html"><img src="/static/img/img-8.jpg" class="img-responsive" alt=""></a></li>
-            <li><a href="portfolio-single.html"><img src="/static/img/img-9.jpg" class="img-responsive" alt=""></a></li>
-            <li><a href="portfolio-single.html"><img src="/static/img/img-7.jpg" class="img-responsive" alt=""></a></li>
-            <li><a href="portfolio-single.html"><img src="/static/img/img-8.jpg" class="img-responsive" alt=""></a></li>
-            <li><a href="portfolio-single.html"><img src="/static/img/img-9.jpg" class="img-responsive" alt=""></a></li>
-          </ul>
-        </div>
-      </div>
+      <!--<div class="col-md-4 col-sm-8 margin30">-->
+        <!--<div class="footer-col">-->
+          <!--<h3>{% trans "Featured Work" %}</h3>-->
+          <!--<ul class="list-inline f2-work">-->
+            <!--<li><a href="portfolio-single.html"><img src="/static/img/img-1.jpg" class="img-responsive" alt=""></a></li>-->
+            <!--<li><a href="portfolio-single.html"><img src="/static/img/img-2.jpg" class="img-responsive" alt=""></a></li>-->
+            <!--<li><a href="portfolio-single.html"><img src="/static/img/img-3.jpg" class="img-responsive" alt=""></a></li>-->
+            <!--<li><a href="portfolio-single.html"><img src="/static/img/img-4.jpg" class="img-responsive" alt=""></a></li>-->
+            <!--<li><a href="portfolio-single.html"><img src="/static/img/img-5.jpg" class="img-responsive" alt=""></a></li>-->
+            <!--<li><a href="portfolio-single.html"><img src="/static/img/img-6.jpg" class="img-responsive" alt=""></a></li>-->
+            <!--<li><a href="portfolio-single.html"><img src="/static/img/img-7.jpg" class="img-responsive" alt=""></a></li>-->
+            <!--<li><a href="portfolio-single.html"><img src="/static/img/img-8.jpg" class="img-responsive" alt=""></a></li>-->
+            <!--<li><a href="portfolio-single.html"><img src="/static/img/img-9.jpg" class="img-responsive" alt=""></a></li>-->
+            <!--<li><a href="portfolio-single.html"><img src="/static/img/img-7.jpg" class="img-responsive" alt=""></a></li>-->
+            <!--<li><a href="portfolio-single.html"><img src="/static/img/img-8.jpg" class="img-responsive" alt=""></a></li>-->
+            <!--<li><a href="portfolio-single.html"><img src="/static/img/img-9.jpg" class="img-responsive" alt=""></a></li>-->
+          <!--</ul>-->
+        <!--</div>-->
+      <!--</div>-->
       <!--footer col-->
       <div class="col-md-4 col-sm-8 margin30">
         <div class="footer-col">
-          <h3>Contact</h3>
+          <h3>{% trans "Contact" %}</h3>
           <ul class="list-unstyled contact">
             <li>
-            <p><strong><i class="fa fa-map-marker"></i> Address:</strong> Singapore</p>
+            <p><strong><i class="fa fa-map-marker"></i> {% trans "Address:" %}</strong> {% trans "Singapore" %}</p>
             </li>
             <li>
-            <p><strong><i class="fa fa-envelope"></i> Mail Us:</strong> <a href="mailto:support@riceglobal.com">support@riceglobal.com</a></p>
+            <p><strong><i class="fa fa-envelope"></i>{% trans "Mail Us:" %}</strong> <a href="mailto:support@riceglobal.com">support@riceglobal.com</a></p>
             </li>
             <li>
-            <p><strong><i class="fa fa-phone"></i> Phone:</strong> +65 8292 8237</p>
+            <p><strong><i class="fa fa-phone"></i> {% trans "Phone:" %}</strong> +65 8292 8237</p>
             </li>
             <li>
-            <p><strong><i class="fa fa-print"></i> Fax</strong> 1800 1800 1800</p>
+            <p><strong><i class="fa fa-print"></i> {% trans "Fax:" %}</strong> 1800 1800 1800</p>
             </li>
-            <li>
-            <p><strong><i class="fa fa-skype"></i> Skype</strong> support.riceglobal</p>
-            </li>
+            <!--<li>-->
+            <!--<p><strong><i class="fa fa-skype"></i> {% trans "Skype" %}</strong> support.riceglobal</p>-->
+            <!--</li>-->
           </ul>
         </div>
       </div>

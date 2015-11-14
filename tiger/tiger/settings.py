@@ -48,6 +48,16 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+# TEMPLATE_CONTEXT_PROCESSORS = (
+    # "django.contrib.auth.context_processors.auth",
+    # "django.core.context_processors.debug",
+    # "django.core.context_processors.i18n",
+    # "django.core.context_processors.media",
+    # "django.core.context_processors.static",
+    # "django.core.context_processors.tz",
+    # "django.contrib.messages.context_processors.messages",
+# )
+
 ROOT_URLCONF = 'tiger.urls'
 
 WSGI_APPLICATION = 'tiger.wsgi.application'
@@ -87,10 +97,12 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
 
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
-
-LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Singapore'
 
@@ -136,3 +148,10 @@ LOGGING = {
 
 PAGE_COUNT = 3
 YOUTUBE_URL_PREFIX = 'http://www.youtube.com/embed/'
+
+LANGUAGE_CODE = 'en'
+LANGUAGES = (
+  ('en', 'English'),
+  ('zh_CN', 'Chinese'),
+)
+

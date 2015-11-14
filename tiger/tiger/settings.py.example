@@ -85,6 +85,10 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
 
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
@@ -133,3 +137,10 @@ LOGGING = {
 
 PAGE_COUNT = 3
 YOUTUBE_URL_PREFIX = 'http://www.youtube.com/embed/'
+
+LANGUAGE_CODE = 'en'
+LANGUAGES = (
+  ('en', 'English'),
+  ('zh-CN', 'Chinese'),
+)
+
