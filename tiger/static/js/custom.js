@@ -1,23 +1,3 @@
-/*Theme    : assan
- * Author  : Design_mylife
- * Version : V1.8
- * 
- */
-
- //$( window ).resize(function() {
-    //$(".navbar-collapse").css({ maxHeight: $(window).height() - $(".navbar-header").height() + "px" });
-//});
-//sticky header on scroll
-//$(document).ready(function () {
-    //$(window).load(function () {
-        //$(".sticky").sticky({topSpacing: 0});
-    //});
-//});
-
-/* ==============================================
- WOW plugin triggers animate.css on scroll
- =============================================== */
-
 //owl carousel for testimonials
 $(document).ready(function () {
 
