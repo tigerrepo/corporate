@@ -21,17 +21,36 @@
     <div class="row">
       <div class="col-sm-5">
         <form action='{% url "search" %}' method="post">
-        <div class="input-group">
-          <input type="text" class="form-control" name="keyword" placeholder="Search here ...">
-          <span class="input-group-btn">
-            <button class="btn btn-theme-bg btn-lg" type="submit"><i class="fa fa-search"></i></button>
-          </span>
-        </div>
+          {% csrf_token %}
+          <div class="input-group">
+            <input type="text" class="form-control" name="keyword" placeholder="Search here ...">
+            <span class="input-group-btn">
+              <button class="btn btn-theme-bg btn-lg" type="submit"><i class="fa fa-search"></i></button>
+            </span>
+          </div>
         </form>
       </div>
     </div>
   </div>
 </div>
 <div class="divide80"></div>
-
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <span class="results-number">About 230,000 results (in 0.40 seconds)</span>
+      {% for r in results %}
+      <div class="results-box">
+        <h3><a href="#">{{ r.name  }}</a></h3>
+        <ul class="list-inline link-ul">
+          <li>{{ r.url }}</li>
+          <li><a href="#">Wrapbootstrap</a></li>
+          <li><a href="#">Design_mylife</a></li>
+        </ul>
+        <p>{{ r.description }}</p>
+      </div>
+      <hr>
+      {% endfor %} 
+    </div>
+  </div>
+</div>
 {% endblock %}

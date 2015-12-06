@@ -189,4 +189,9 @@ class SearchView(FormView):
     form_class = forms.SearchForm
     template_name = "search.html"
 
+    def form_valid(self, form):
+        keyword = form.cleaned_data['keyword']
+        context = self.get_context_data()
+        context['results'] = models.Company.objects.filter(name__contains=keyword)
+        return render(self.request, self.template_name, context)
 
