@@ -83,11 +83,11 @@ MEDIA_ROOT = '/var/www/cdn.riceglobal.com/gallery/'
 MEDIA_URL = '%s' % IMAGE_URL_PREFIX
 PDF_URL = 'http://cdn.riceglobal.com/pdf/'
 VIDEO_URL = 'http://cdn.riceglobal.com/video/'
-
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
     os.path.join(MEDIA_ROOT, "static"),
 )
+
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".

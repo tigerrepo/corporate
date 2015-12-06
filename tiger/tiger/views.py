@@ -12,15 +12,14 @@ from django.views.generic.edit import CreateView, FormView
 
 from tiger import forms, models, settings
 
-
 class IndexView(TemplateView):
     template_name = "index.html"
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        companies = models.Company.objects.filter(status=1)
+        companies = models.Company.objects.filter(status=1, is_index=True)
 
         company_tag_dict = collections.defaultdict(list)
-        for item in models.CompanyTag.objects.filter():
+        for item in models.CompanyTag.objects.all():
             company_tag_dict[item.company_id].append(item.tag.name)
 
         company_video_dict = {}
@@ -34,8 +33,6 @@ class IndexView(TemplateView):
             company_dict['video_host_url'] = "%s%s" % (settings.VIDEO_URL, video_tuple[0])
             company_dict['youtube_url'] = "%s%s" % (settings.YOUTUBE_URL_PREFIX, video_tuple[2])
             company_dict['video_url'] = video_tuple[1]
-            # company_dict['video_url'] = "%s%s/%s.mp4" % (settings.VIDEO_URL, company.id, company.id)
-            # company_dict['poster_url'] = "%s%s/%s.jpg" % (settings.VIDEO_URL, company.id, company.id)
             company_list.append(company_dict)
 
         products = models.Product.objects.filter(status=1).order_by("-id")[0:3]
@@ -67,9 +64,11 @@ class CompanyDetailView(TemplateView):
 
         company_url = self.kwargs['company_name']
         company = get_object_or_404(models.Company, url=company_url, status=1)
+        if company.status != 1:
+            raise Http404
         context['company'] = company
-        context['video_url'] = "%s%s/%s.mp4" % (settings.VIDEO_URL, company.id, company.id)
-        context['poster_url'] = "%s%s/%s.jpg" % (settings.VIDEO_URL, company.id, company.id)
+        video = models.Video.objects.get(company=company)
+        context['youtube_url'] = "%s%s" % (settings.YOUTUBE_URL_PREFIX, video.name)
         context['pdf_url'] = "%s%s/%s" % (settings.PDF_URL, company.id, company.pdf_url)
         products = models.Product.objects.filter(company=company, status=1)
         product_list = []
@@ -96,7 +95,7 @@ class CompanyListView(TemplateView):
         context = super(CompanyListView, self).get_context_data(**kwargs)
 
         company_tag_dict = collections.defaultdict(list)
-        for item in models.CompanyTag.objects.filter():
+        for item in models.CompanyTag.objects.all():
             company_tag_dict[item.company_id].append(item.tag.name)
 
         company_video_dict = {}
@@ -162,6 +161,8 @@ class ProductDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ProductDetailView, self).get_context_data(**kwargs)
+        if self.object.status != 1:
+            raise Http404
 
         galleries =  models.Gallery.objects.filter(product=self.object)
         gallery_list = []
@@ -193,5 +194,7 @@ class SearchView(FormView):
         keyword = form.cleaned_data['keyword']
         context = self.get_context_data()
         context['results'] = models.Company.objects.filter(name__contains=keyword)
+        context['keyword'] = keyword
+        context['r_count'] = len(context['results'])
         return render(self.request, self.template_name, context)
 
