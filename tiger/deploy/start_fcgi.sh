@@ -1,6 +1,4 @@
 #!/bin/bash
-export PATH=/usr/kerberos/sbin:/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/home/garadmin/bin
-. /var/www/HRIS_ENV/bin/activate
 domain=$1
 port=`cat port.cfg`
 if [ -z $domain ]
