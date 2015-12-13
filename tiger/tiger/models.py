@@ -29,9 +29,9 @@ class Account(models.Model):
 
 class Company(models.Model):
     name = models.CharField(max_length=32, unique=True)
-    slogan = models.CharField(max_length=128)
+    slogan = models.CharField(max_length=128, default='')
     url = models.CharField(max_length=64, unique=True)
-    description = models.CharField(max_length=256)
+    description = models.CharField(max_length=1024)
     create_time = models.DateTimeField(auto_now_add=True)
     valid_from = models.DateTimeField()
     valid_to = models.DateTimeField()
@@ -42,8 +42,8 @@ class Company(models.Model):
     address = models.CharField(max_length=128)
     email = models.CharField(max_length=64)
     tel = models.CharField(max_length=20)
-    fax = models.CharField(max_length=20)
-    
+    fax = models.CharField(max_length=20, default='')
+
     class Meta:
         db_table = "company_tab"
 
@@ -52,7 +52,7 @@ class Company(models.Model):
 
 class Video(models.Model):
     name = models.CharField(max_length=32)
-    description = models.CharField(max_length=128)
+    description = models.CharField(max_length=1024)
     video_url = models.CharField(max_length=256)
     host_url = models.CharField(max_length=128)
     company = models.ForeignKey(Company, on_delete=models.PROTECT)
@@ -95,7 +95,7 @@ class CompanyTag(models.Model):
 class Product(models.Model):
     company = models.ForeignKey(Company, on_delete=models.PROTECT)
     name = models.CharField(max_length=64)
-    description = models.CharField(max_length=512)
+    description = models.CharField(max_length=1024)
     create_date = models.DateTimeField(auto_now_add=True)
     status = models.SmallIntegerField(choices=Account.STATUS_CHOICES, default=1)
 
