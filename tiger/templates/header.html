@@ -9,18 +9,16 @@
         <li {% ifequal 'index' url_path %} class="active" {%endifequal%}>
         <a href="{% url 'home' %}" >{% trans "Home" %} </a>
         </li>
-        <!--menu home li end here-->
         <li {% ifequal 'business' url_path %} class="active" {%endifequal%}>
-        <a href="{% url 'company-list' %}" >{% trans "Corporates" %} </a>
+        <a href="{% url 'company-list' %}" >{% trans "Companies" %} </a>
         </li>
-        <!--menu Portfolio li end here-->
         <li {% ifequal 'product' url_path %} class="active" {%endifequal%}>
         <a href="{% url 'product-list' %}" >{% trans "Products" %} </a>
         </li>
         <li {% ifequal 'price' url_path %} class="active" {%endifequal%}>
         <a href="{% url 'price-detail' %}" >{% trans "Pricing" %} </a>
         </li>
-        <li {% ifequal 'search' url_path %} class="active" {%endifequal%}>
+        <li {% ifequal 'search' url_path %} class="active" {% endifequal %}>
         <a href="{% url 'search' %}" >{% trans "Search" %} </a>
         </li>
         {% ifequal 'index' url_path %}

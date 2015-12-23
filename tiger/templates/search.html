@@ -4,12 +4,12 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-6">
-        <h4>Search</h4>
+        <h4>SEARCH</h4>
       </div>
       <div class="col-sm-6 hidden-xs text-right">
         <ol class="breadcrumb">
-          <li><a href='{% url "home" %}'>Home</a></li>
-          <li>Search</li>
+          <li><a href='{% url "home" %}'>HOME</a></li>
+          <li>SEARCH</li>
         </ol>
       </div>
     </div>
@@ -38,7 +38,9 @@
 <div class="divide20"></div>
   <div class="row">
     <div class="col-sm-12">
-      <span class="results-number">Search for <span style="color:red;">{{ keyword }}</span>, about {{ r_count }} results found</span>
+      {% if searched %}
+        <span class="results-number">Search for <span style="color:red;">{{ keyword }}</span>, about {{ r_count }} results found</span>
+      {% endif %}
       {% for r in results %}
       <div class="results-box">
         <h3><a href='{% url "company-detail" r.url %}'>{{ r.name  }}</a></h3>

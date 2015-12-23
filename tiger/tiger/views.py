@@ -186,9 +186,19 @@ class ContactView(FormView):
 class PriceView(TemplateView):
     template_name = "pricing.html"
 
+    def get_context_data(self, **kwargs):
+        context = super(PriceView, self).get_context_data(**kwargs)
+        context['url_path'] = 'price'
+        return context
+
 class SearchView(FormView):
     form_class = forms.SearchForm
     template_name = "search.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(SearchView, self).get_context_data(**kwargs)
+        context['url_path'] = 'search'
+        return context
 
     def form_valid(self, form):
         keyword = form.cleaned_data['keyword']
@@ -196,5 +206,6 @@ class SearchView(FormView):
         context['results'] = models.Company.objects.filter(name__contains=keyword)
         context['keyword'] = keyword
         context['r_count'] = len(context['results'])
+        context['searched'] = True
         return render(self.request, self.template_name, context)
 
