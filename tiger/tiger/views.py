@@ -67,8 +67,11 @@ class CompanyDetailView(TemplateView):
         if company.status != 1:
             raise Http404
         context['company'] = company
-        video = models.Video.objects.get(company=company)
-        context['youtube_url'] = "%s%s" % (settings.YOUTUBE_URL_PREFIX, video.name)
+        try:
+            video = models.Video.objects.get(company=company)
+            context['youtube_url'] = "%s%s" % (settings.YOUTUBE_URL_PREFIX, video.name)
+        except models.Video.DoesNotExist:
+            context['youtube_url'] = ""
         context['pdf_url'] = "%s%s/%s" % (settings.PDF_URL, company.id, company.pdf_url)
         products = models.Product.objects.filter(company=company, status=1)
         product_list = []
