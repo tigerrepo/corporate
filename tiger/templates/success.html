@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="breadcrumb-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h4>MESSAGE</h4>
+                </div>
+                <div class="col-sm-6 hidden-xs text-right">
+                    <ol class="breadcrumb">
+                        <li><a href='{% url "home" %}'>HOME</a></li>
+                        <li>MESSAGE</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divide80"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 margin20">
+                Congratulations, your message is sent successfully. Thank you for your supporting.
+            </div>
+        </div>
+    </div>
+    <div class="divide80"></div>
+{% endblock %}

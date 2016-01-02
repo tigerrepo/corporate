@@ -12,4 +12,6 @@ urlpatterns = patterns('',
     url(r'^contact$', csrf_exempt(ContactView.as_view()), name='contact-add'),
     url(r'^price$', PriceView.as_view(), name='price-detail'),
     url(r'^search$', SearchView.as_view(), name='search'),
+    url(r'^join$', JoinUsView.as_view(), name='kick-start'),
+    url(r'^success$', SuccessView.as_view(), name='success'),
 )

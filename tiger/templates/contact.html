@@ -31,7 +31,7 @@
                   <input type="email" class="form-control" placeholder="Email Address" id="id_email" name="email" required="" data-validation-required-message="Please enter your email address.">
                   <p class="help-block"></p>
                 </div>
-              </div> 
+              </div>
             </div>
           </div>
           <div class="row control-group">
@@ -48,7 +48,7 @@
               <p class="help-block"></p>
             </div>
           </div>
-          <input type="hidden" value="{{company.id}}" id="company_id" /> 
+          <input type="hidden" value="{{company.id}}" id="company_id" />
           <div class="row control-group">
             <div class="form-group col-xs-12 controls">
               <label>{% trans "Message" %}<span>*</span></label>
@@ -70,7 +70,7 @@
     <div class="col-md-4">
       <h3 class="heading">{% trans "Contact info" %}</h3>
       <ul class="list-unstyled contact contact-info">
-        <li><p><strong><i class="fa fa-map-marker"></i> {% trans "Address:" %}</strong> {{company.address}}</p></li> 
+        <li><p><strong><i class="fa fa-map-marker"></i> {% trans "Address:" %}</strong> {{company.address}}</p></li>
         <li><p><strong><i class="fa fa-envelope"></i> {% trans "Mail Us:" %}</strong> <a href="mailto:{{company.email}}">{{company.email}}</a></p></li>
         <li> <p><strong><i class="fa fa-phone"></i> {% trans "Phone:" %}</strong> {{company.tel}}</p></li>
         <li> <p><strong><i class="fa fa-print"></i>{% trans "Fax:" %}</strong> {{company.fax}}</p></li>

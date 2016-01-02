@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+    <div class="breadcrumb-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h4>JOIN US</h4>
+                </div>
+                <div class="col-sm-6 hidden-xs text-right">
+                    <ol class="breadcrumb">
+                        <li><a href='{% url "home" %}'>HOME</a></li>
+                        <li>JOIN US</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divide80"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-sm-offset-1 margin30 sky-form-columns contact-sky-option">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="center-heading">
+                            <h2>Join Us</h2>
+                            <span class="center-line"></span>
+
+                            <p>
+                                Do you feel that you are not making progress with your current marketing channels? Have
+                                you considered or even attempted expanding your marketing exposure, but the effort was
+                                too overwhelming for you?
+                            </p>
+
+                            <p>
+                                Through changes in content consumption and how people connect, there is a greater need
+                                for companies to change the way they attract potential partners and clients. We believe
+                                that with the rise of high-speed Internet, it is no longer sufficient for companies to
+                                brand themselves using static images and text.
+                            </p>
+
+                            <p>
+                                Today, major platforms have progressed into moving pictures as a storytelling medium, to
+                                show, share and sell how their products and services work for potential clients. Video
+                                and online technologies have enabled companies to better reach out to and engage
+                                potential clients in more markets, resulting in better ROIs on their marketing efforts.
+                            </p>
+
+                            <p>
+                                RICE Global is a streamlined and complete approach to engaging local and global
+                                audiences in a simple-to-use platform. With offices established in Singapore, China, and
+                                Indonesia, we know exactly how to allow your business to penetrate into the global
+                                markets.
+                            </p>
+
+                            <p>
+                                Together with our highly experienced consultants and creative team, we provide clients
+                                with fuss-free holistic solution - from marketing consultation, to content creation and
+                                management, to exposure and lead generation and analysis.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--center heading row-->
+                <div class="row margin40">
+
+
+                </div>
+                <p class="margin30">
+                    We are waiting for you!
+                </p>
+
+                <form name="sentMessage" action='{% url "kick-start" %}' id="contactForm" method="post" novalidate="">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 controls">
+                                    <label>{% trans "Name" %}<span>*</span></label>
+                                    {{ form.name }}
+                                    {% if form.name.errors %}
+                                        <p class="help-block">{{ form.name.errors.0 }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 controls">
+                                    <label>{% trans "Company Name" %}<span>*</span></label>
+                                    {{ form.company }}
+                                    {% if form.company.errors %}
+                                        <p class="help-block">{{ form.company.errors.0 }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 controls">
+                                    <label>{% trans "Email Address" %}<span>*</span></label>
+                                    {{ form.email }}
+                                    {% if form.email.errors %}
+                                        <p class="help-block">{{ form.email.errors.0 }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12  controls">
+                                    <label>{% trans "Phone Number" %}<span>*</span></label>
+                                    {{ form.mobile }}
+                                    {% if form.mobile.errors %}
+                                        <p class="help-block">{{ form.mobile.errors.0 }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12  controls">
+                                    <label>{% trans "Choose your plan" %}<span>*</span></label>
+                                    {{ form.region }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 controls">
+                            <label>{% trans "Remarks" %}</label>
+                            {{ form.remarks }}
+                            {% if form.remarks.errors %}
+                                <p class="help-block">{{ form.remarks.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-xs-12">
+                            <button type="submit" class="btn btn-theme-bg btn-lg">{% trans "Send Message" %}</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="divide80"></div>
+{% endblock %}

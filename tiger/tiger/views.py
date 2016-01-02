@@ -1,9 +1,10 @@
 import collections
+from django.core.cache import cache
 
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.core.urlresolvers import reverse
 from django.forms.models import model_to_dict
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import Http404, get_object_or_404, redirect, render
 from django.utils.timezone import localtime, now
 from django.views.generic import TemplateView
@@ -16,7 +17,7 @@ class IndexView(TemplateView):
     template_name = "index.html"
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        companies = models.Company.objects.filter(status=1, is_index=True)
+        companies = models.Company.objects.filter(status=1, is_index=True).order_by('name')
 
         company_tag_dict = collections.defaultdict(list)
         for item in models.CompanyTag.objects.all():
@@ -56,8 +57,9 @@ class IndexView(TemplateView):
         context['url_path'] = 'index'
         return context
 
-class CompanyDetailView(TemplateView):
+class CompanyDetailView(FormView):
     template_name = "company_detail.html"
+    form_class = forms.ContactForm
 
     def get_context_data(self, **kwargs):
         context = super(CompanyDetailView, self).get_context_data(**kwargs)
@@ -106,7 +108,7 @@ class CompanyListView(TemplateView):
             company_video_dict[video.company_id] = (video.host_url, video.video_url, video.name)
 
         tags = models.Tag.objects.filter(status=1)
-        companies = models.Company.objects.filter(status=1)
+        companies = models.Company.objects.filter(status=1).order_by('name')
         company_list = []
         for company in companies:
             company_dict = model_to_dict(company)
@@ -182,9 +184,37 @@ class ContactView(FormView):
     template_name = "contact.html"
 
     def form_valid(self, form):
+        ip = self.request.META['REMOTE_ADDR']
+        if cache.get(ip, None):
+            cache.set(ip, 1, 300)
+            return HttpResponse("1")
+
         form.instance.company_id = form.cleaned_data['company_id']
         form.save()
-        return HttpResponse("OK")
+        cache.set(ip, 1, 300)
+        return HttpResponse("0")
+
+class JoinUsView(FormView):
+    form_class = forms.JoinUsForm
+    template_name = "enquiry.html"
+    success_url = "/success"
+
+    def get_initial(self):
+        initials = {}
+        initials['region'] = self.request.GET.get('region', None)
+        return initials
+
+    def form_valid(self, form):
+        ip = self.request.META['REMOTE_ADDR']
+        if cache.get(ip, None):
+            cache.set(ip, 1, 300)
+            form.on_frequent_submit()
+            return self.form_invalid(form)
+
+        form.instance.ip = self.request.META['REMOTE_ADDR']
+        form.save()
+        cache.set(ip, 1, 300)
+        return super(JoinUsView, self).form_valid(form)
 
 class PriceView(TemplateView):
     template_name = "pricing.html"
@@ -212,3 +242,6 @@ class SearchView(FormView):
         context['searched'] = True
         return render(self.request, self.template_name, context)
 
+
+class SuccessView(TemplateView):
+    template_name = "success.html"

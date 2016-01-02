@@ -3070,6 +3070,10 @@ p.dropcap:first-letter {
   color: red;
 }
 
+.help-block{
+  color: red;
+}
+
 label span {
   color: red;
   margin-left: 5px;
