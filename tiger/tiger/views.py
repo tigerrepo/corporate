@@ -42,7 +42,7 @@ class IndexView(TemplateView):
             product_dict = model_to_dict(product)
             try:
                 gallery = models.Gallery.objects.get(product=product, is_cover=1)
-                cover_image = "%s%s/%s" % (settings.IMAGE_URL_PREFIX, gallery.id, gallery.image_url)
+                cover_image = "%s%s/%s" % (settings.IMAGE_URL_PREFIX, product.id, gallery.image_url)
             except models.Gallery.DoesNotExist:
                 cover_image = '%sdefault.jpg' % settings.IMAGE_URL_PREFIX
             product_dict['cover_image'] = cover_image
