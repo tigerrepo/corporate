@@ -2,40 +2,40 @@
 
 {% block content %}
 
-<div class="breadcrumb-wrap">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6">
-        <h4>COMPANIES</h4>
-      </div>
-      <div class="col-sm-6 hidden-xs text-right">
-        <ol class="breadcrumb">
-          <li><a href='{% url "home" %}'>HOME</a></li>
-          <li>COMPANIES</li>
-        </ol>
-      </div>
+    <div class="breadcrumb-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h4>Industries</h4>
+                </div>
+                <div class="col-sm-6 hidden-xs text-right">
+                    <ol class="breadcrumb">
+                        <li><a href='{% url "home" %}'>HOME</a></li>
+                        <li>INDUSTRIES</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-<!--breadcrumbs-->
-<div class="divide80"></div>
-<div class="container">
-  <div class="portfolio-cube">
-    <div id="filters-container" class="cbp-l-filters-button">
-      <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">
-        All 
-        <div class="cbp-filter-counter"></div>
-      </div>
-      {% for tag in tags %}
-      <div data-filter=".{{tag.name}}" class="cbp-filter-item">
-        {{tag.name}} 
-        <div class="cbp-filter-counter"></div>
-      </div>
-      {% endfor %}
+    <!--breadcrumbs-->
+    <div class="divide80"></div>
+    <div class="container">
+        <div class="portfolio-cube">
+            <div id="filters-container" class="cbp-l-filters-button">
+                <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">
+                    All
+                    <div class="cbp-filter-counter"></div>
+                </div>
+                {% for tag in tags %}
+                    <div data-filter=".{{ tag.name }}" class="cbp-filter-item">
+                        {{ tag.name }}
+                        <div class="cbp-filter-counter"></div>
+                    </div>
+                {% endfor %}
+            </div>
+            {% include "company_list.html" %}
+        </div>
     </div>
-    {% include "company_list.html" %}
-  </div>
-</div>
-<div class="divide80"></div>
+    <div class="divide80"></div>
 
 {% endblock %}

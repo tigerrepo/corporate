@@ -100,8 +100,10 @@ class CompanyListView(TemplateView):
         context = super(CompanyListView, self).get_context_data(**kwargs)
 
         company_tag_dict = collections.defaultdict(list)
+        tag_company_dict = collections.defaultdict(list)
         for item in models.CompanyTag.objects.all():
             company_tag_dict[item.company_id].append(item.tag.name)
+            tag_company_dict[item.tag_id].append(item.company_id)
 
         company_video_dict = {}
         for video in models.Video.objects.all():
@@ -120,7 +122,7 @@ class CompanyListView(TemplateView):
             company_dict['poster_url'] = "%s%s/%s.jpg" % (settings.VIDEO_URL, company.id, company.id)
             company_list.append(company_dict)
 
-        context['tags'] = tags
+        context['tags'] = [tag for tag in tags if tag_company_dict.get(tag.id, [])]
         context['companies'] = company_list
         context['url_path'] = 'business'
         return context

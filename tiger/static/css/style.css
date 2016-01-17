@@ -472,7 +472,7 @@ p.sub-text {
 }
 
 .navbar-brand img {
-  width: 300px;
+  width: 240px;
   height: auto;
 }
 
@@ -2421,6 +2421,7 @@ ul.post-desc li + li {
   padding: 80px 0 0;
   position: relative;
   clear: both;
+  color: #ffffff;
 }
 
 .footer-col h3 {
@@ -2450,7 +2451,7 @@ ul.post-desc li + li {
 }
 
 .contact a {
-  color: #777;
+  color: #fcfcfc;
 }
 
 .contact a:hover {

@@ -1,62 +1,63 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="breadcrumb-wrap">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6">
-        <h4>{{company.name}}</h4> 
-      </div>
-      <div class="col-sm-6 hidden-xs text-right">
-        <ol class="breadcrumb">
-          <li><a href="{% url 'home' %}">HOME</a></li>
-          <li>COMPANIES</li>
-        </ol>
-      </div>
+    <div class="breadcrumb-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h4>{{ company.name }}</h4>
+                </div>
+                <div class="col-sm-6 hidden-xs text-right">
+                    <ol class="breadcrumb">
+                        <li><a href="{% url 'home' %}">HOME</a></li>
+                        <li>INDUSTRIES</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-<!--breadcrumbs-->
-<div class="divide80"></div>
-<div class="container">
-  {% if youtube_url != '' %}
-  <div class="row">
-    <div class="col-md-12">
-      <div class="center-heading">
-        <h2>Company Video</h2>
-        <span class="center-line"></span>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="js-video  widescreen">
-      <iframe width="1170" height="684" src="{{youtube_url}}">
-      </iframe>
-    </div>
-  </div>
-  <div class="divide60"></div>
-  {% endif %}
-  {% if products %}
-  <div class="row">
-    <div class="col-md-12">
-      <div class="center-heading">
-        <h2>Product List</h2>
-        <span class="center-line"></span>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="portfolio-cube">
-      <div id="filters-container" class="cbp-l-filters-button">
-      </div> 
-      {% include "product_list.html" %}
-    </div>
-  </div>
-  {% endif %}
+    <!--breadcrumbs-->
+    <div class="divide80"></div>
+    <div class="container">
+        {% if youtube_url != '' %}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="center-heading">
+                        <h2>Video</h2>
+                        <span class="center-line"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="js-video  widescreen">
+                    <iframe width="1170" height="684" src="{{ youtube_url }}">
+                    </iframe>
+                </div>
+            </div>
+        {% endif %}
+        {% if products %}
+            <div class="divide60"></div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="center-heading">
+                        <h2>Product List</h2>
+                        <span class="center-line"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="portfolio-cube">
+
+                    {% include "product_list.html" %}
+                </div>
+            </div>
+        {% endif %}
     </div>
     <div class="divide60"></div>
-{% include "contact.html" %}
-<div class="divide60"></div>
+    {% include "contact.html" %}
+    <div class="divide60"></div>
 {% endblock %}
+
 {% block js %}
-<script src="/static/js/contact_me.js"></script>
+    <script src="/static/js/contact_me.js"></script>
 {% endblock %}
+
