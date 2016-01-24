@@ -21,8 +21,7 @@ class IndexView(TemplateView):
     template_name = "index.html"
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        companies = [ obj.company for obj
-                      in models.HotCompany.objects.select_related("company").all().order_by("dis_order")]
+        companies = models.Company.objects.filter(is_index=True).order_by("dis_order")
 
         company_tag_dict = collections.defaultdict(list)
         for item in models.CompanyTag.objects.all():
