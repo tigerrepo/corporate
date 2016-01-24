@@ -89,16 +89,16 @@
             <h3 class="heading">{% trans "Contact info" %}</h3>
             <ul class="list-unstyled contact contact-info">
 
-                <li><p><i class="fa fa-map-marker"></i> <span style="margin-left: 5px;">{{ company.address }}</span>
+                <li><p><strong><i class="fa fa-map-marker"></i></strong> <span style="margin-left: 5px;">{{ company.address }}</span>
                 </p></li>
-                <li><p><strong><i class="fa fa-envelope"></i> {% trans "Mail Us:" %}</strong> <a
+                <li><p><strong><i class="fa fa-envelope"></i></strong> <a
                         href="mailto:{{ company.email }}">{{ company.email }}</a></p></li>
-                <li><p><strong><i class="fa fa-phone"></i> {% trans "Phone:" %}</strong> {{ company.tel }}</p></li>
+                <li><p><strong><i class="fa fa-phone"></i> </strong> {{ company.tel }}</p></li>
                 {% if company.fax != "" %}
-                    <li><p><strong><i class="fa fa-print"></i>{% trans "Fax:" %}</strong> {{ company.fax }}</p></li>
+                    <li><p><strong><i class="fa fa-print"></i></strong> {{ company.fax }}</p></li>
                 {% endif %}
                 {% if company.pdf_url != "" %}
-                    <li><p><strong><i class="fa fa-download"></i>{% trans "PDF:" %}</strong> <a target="_blank" href={{ pdf_url }}>Download</a>
+                    <li><p><strong><i class="fa fa-download"></i></strong> <a target="_blank" href={{ pdf_url }}>Download</a>
                     </li>
                 {% endif %}
             </ul>

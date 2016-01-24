@@ -1,10 +1,11 @@
 import collections
+import json
 from django.core.cache import cache
 
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.core.urlresolvers import reverse
 from django.forms.models import model_to_dict
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import Http404, get_object_or_404, redirect, render
 from django.utils.timezone import localtime, now
 from django.views.generic import TemplateView
@@ -12,12 +13,16 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, FormView
 
 from tiger import forms, models, settings
+import  logging
+
+logger = logging.getLogger('main')
 
 class IndexView(TemplateView):
     template_name = "index.html"
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        companies = models.Company.objects.filter(status=1, is_index=True).order_by('name')
+        companies = [ obj.company for obj
+                      in models.HotCompany.objects.select_related("company").all().order_by("dis_order")]
 
         company_tag_dict = collections.defaultdict(list)
         for item in models.CompanyTag.objects.all():
@@ -125,6 +130,7 @@ class CompanyListView(TemplateView):
         context['tags'] = [tag for tag in tags if tag_company_dict.get(tag.id, [])]
         context['companies'] = company_list
         context['url_path'] = 'business'
+        logger.info("data:%s", context)
         return context
 
 class ProductListView(TemplateView):
@@ -187,9 +193,11 @@ class ContactView(FormView):
 
     def form_valid(self, form):
         ip = self.request.META['REMOTE_ADDR']
+        logger.info("contact form data:%s, from client:%s", form.cleaned_data, ip)
         if cache.get(ip, None):
+            logger.info("failed contact form data:%s, from client:%s, too frequent", form.cleaned_data, ip)
             cache.set(ip, 1, 300)
-            return HttpResponse("1")
+            return HttpResponseForbidden()
 
         form.instance.company_id = form.cleaned_data['company_id']
         form.save()
@@ -208,8 +216,10 @@ class JoinUsView(FormView):
 
     def form_valid(self, form):
         ip = self.request.META['REMOTE_ADDR']
+        logger.info("join us form data:%s, from client:%s", form.cleaned_data, ip)
         if cache.get(ip, None):
             cache.set(ip, 1, 300)
+            logger.info("failed join us form data:%s, from client:%s, too frequent", form.cleaned_data, ip)
             form.on_frequent_submit()
             return self.form_invalid(form)
 

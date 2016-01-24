@@ -2442,12 +2442,12 @@ ul.post-desc li + li {
 }
 
 .contact strong {
-  margin-right: 10px;
+  margin-right: 1px;
   font-weight: bold;
 }
 
 .contact strong i {
-  margin-right: 5px;
+  margin-right: 1px;
 }
 
 .contact a {
