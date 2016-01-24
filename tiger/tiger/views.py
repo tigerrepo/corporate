@@ -37,7 +37,6 @@ class IndexView(TemplateView):
             video_tuple = company_video_dict.get(company.id, ('','', ''))
             company_dict['video_host_url'] = "%s%s" % (settings.VIDEO_URL, video_tuple[0])
             company_dict['youtube_url'] = "%s%s" % (settings.YOUTUBE_URL_PREFIX, video_tuple[2])
-            # company_dict['video_url'] = video_tuple[1]
             company_list.append(company_dict)
 
         products = [obj for obj in
@@ -107,9 +106,10 @@ class CompanyListView(TemplateView):
 
         company_tag_dict = collections.defaultdict(list)
         tag_company_dict = collections.defaultdict(list)
-        for item in models.CompanyTag.objects.all():
+        for item in models.CompanyTag.objects.select_related("company").all():
             company_tag_dict[item.company_id].append(item.tag.name)
-            tag_company_dict[item.tag_id].append(item.company_id)
+            if item.company.status == models.Account.STATUS_ENABLE:
+                tag_company_dict[item.tag_id].append(item.company_id)
 
         company_video_dict = {}
         for video in models.Video.objects.all():
@@ -122,12 +122,8 @@ class CompanyListView(TemplateView):
             company_dict = model_to_dict(company)
             company_dict['tag_list'] = ' '.join(company_tag_dict.get(company.id, ['Others']))
             video_tuple = company_video_dict.get(company.id, ('','', ''))
-            # company_dict['video_host_url'] = "%s%s" % (settings.VIDEO_URL, video_tuple[0])
             company_dict['youtube_url'] = "%s%s" % (settings.YOUTUBE_URL_PREFIX, video_tuple[2])
-            # company_dict['video_url'] = video_tuple[1]
-            # company_dict['poster_url'] = "%s%s/%s.jpg" % (settings.VIDEO_URL, company.id, company.id)
             company_list.append(company_dict)
-
         context['tags'] = [tag for tag in tags if tag_company_dict.get(tag.id, [])]
         context['companies'] = company_list
         context['url_path'] = 'business'
