@@ -5,7 +5,7 @@
             <h3 class="heading">{% trans "Contact us" %}</h3>
             <h5>{{ company.slogan }}</h5>
 
-            <p>{{ company.description }}</p>
+            <p>{{ company.description|safe }}</p>
 
             <div class="divide30"></div>
             <div class="form-contact">
