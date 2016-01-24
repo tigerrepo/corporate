@@ -21,7 +21,7 @@ class IndexView(TemplateView):
     template_name = "index.html"
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        companies = models.Company.objects.filter(is_index=True).order_by("dis_order")
+        companies = models.Company.objects.filter(status=models.Account.STATUS_ENABLE, is_index=True).order_by("dis_order")
 
         company_tag_dict = collections.defaultdict(list)
         for item in models.CompanyTag.objects.all():
@@ -37,10 +37,12 @@ class IndexView(TemplateView):
             video_tuple = company_video_dict.get(company.id, ('','', ''))
             company_dict['video_host_url'] = "%s%s" % (settings.VIDEO_URL, video_tuple[0])
             company_dict['youtube_url'] = "%s%s" % (settings.YOUTUBE_URL_PREFIX, video_tuple[2])
-            company_dict['video_url'] = video_tuple[1]
+            # company_dict['video_url'] = video_tuple[1]
             company_list.append(company_dict)
 
-        products = models.Product.objects.filter(status=1).order_by("-id")[0:3]
+        products = [obj for obj in
+                    models.Product.objects.select_related("company").filter(status=1).order_by("-id")
+                    if obj.company.status == models.Account.STATUS_ENABLE][0:3]
         product_list = []
         for product in products:
             product_dict = model_to_dict(product)
@@ -70,7 +72,7 @@ class CompanyDetailView(FormView):
 
         company_url = self.kwargs['company_name']
         company = get_object_or_404(models.Company, url=company_url, status=1)
-        if company.status != 1:
+        if company.status != models.Account.STATUS_ENABLE:
             raise Http404
         context['company'] = company
         try:
@@ -120,10 +122,10 @@ class CompanyListView(TemplateView):
             company_dict = model_to_dict(company)
             company_dict['tag_list'] = ' '.join(company_tag_dict.get(company.id, ['Others']))
             video_tuple = company_video_dict.get(company.id, ('','', ''))
-            company_dict['video_host_url'] = "%s%s" % (settings.VIDEO_URL, video_tuple[0])
+            # company_dict['video_host_url'] = "%s%s" % (settings.VIDEO_URL, video_tuple[0])
             company_dict['youtube_url'] = "%s%s" % (settings.YOUTUBE_URL_PREFIX, video_tuple[2])
-            company_dict['video_url'] = video_tuple[1]
-            company_dict['poster_url'] = "%s%s/%s.jpg" % (settings.VIDEO_URL, company.id, company.id)
+            # company_dict['video_url'] = video_tuple[1]
+            # company_dict['poster_url'] = "%s%s/%s.jpg" % (settings.VIDEO_URL, company.id, company.id)
             company_list.append(company_dict)
 
         context['tags'] = [tag for tag in tags if tag_company_dict.get(tag.id, [])]
@@ -141,7 +143,9 @@ class ProductListView(TemplateView):
         for gallery in models.Gallery.objects.all():
             if gallery.is_cover:
                 product_cover_image[gallery.product_id] = gallery.image_url
-        products = models.Product.objects.filter(status=1)
+        products = [obj for obj in
+                    models.Product.objects.select_related("company").filter(status=1).order_by("name")
+                    if obj.company.status == models.Account.STATUS_ENABLE]
         product_list = []
         for product in products:
             product_dict = model_to_dict(product)
@@ -173,7 +177,7 @@ class ProductDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ProductDetailView, self).get_context_data(**kwargs)
-        if self.object.status != 1:
+        if self.object.status != 1 or self.object.company.status != 1:
             raise Http404
 
         galleries =  models.Gallery.objects.filter(product=self.object)
