@@ -1,85 +1,170 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block content %}
-<div class="breadcrumb-wrap">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6">
-        <h4>Features</h4>
-      </div>
-      <div class="col-sm-6 hidden-xs text-right">
-        <ol class="breadcrumb">
-          <li><a href='{% url "home" %}'>HOME</a></li>
-          <li>FEATURES</li>
-        </ol>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="divide80"></div>
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 margin20 wow animated fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
-      <div class="price-wrap">
-        <div class="price-title">
-          <h4>China</h4>
-        </div><!--price title-->
-        <div class="thumbnail">
-          <img src="/static/img/pricing-china.png" />
+    <div class="breadcrumb-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h4>Features</h4>
+                </div>
+                <div class="col-sm-6 hidden-xs text-right">
+                    <ol class="breadcrumb">
+                        <li><a href='{% url "home" %}'>HOME</a></li>
+                        <li>FEATURES</li>
+                    </ol>
+                </div>
+            </div>
         </div>
-
-        <div class="price-features">
-          <ul class="list-unstyled">
-            <li>Professional Company Corporate video with Chinese Voiceover - 3 minutes & 1 Day Shoot (max 4 hours at 1 location)</li>
-            <li>Homepage exposure on .CN portal </li>
-            <li>Gallery Page for Product Images</li>
-            <li>Unlimited Submission of Product Information</li>
-            <li>PDF for downloading</li>
-            <li>Unlimited Submission of Product Information</li>
-            <li>User Login Access for Content and Images management</li>
-            <li>Business Enquiry Form</li>
-            <li>Back-end enquiries tracking </li>
-            <li>One Year Digital Exposure on RG Portal</li>
-            <li>Exposure on RG Official Youku Account</li>
-            <li>Translation Services (Optional as a separate cost)</li>
-          </ul>
-        </div><!--price features-->
-        <div class="price-action">
-          <a href='{% url "kick-start" %}?region=1' class="btn btn-theme-bg">Choose plan</a>
-        </div><!--price action-->
-      </div><!--price-wrap-->                   
-    </div><!--price col-->
-    <div class="col-md-6 margin20 wow animated fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
-      <div class="price-wrap">
-        <div class="price-title">
-          <h4>Singapore</h4>
-        </div><!--price title-->
-        <div class="thumbnail">
-          <img src="/static/img/pricing-singapore.png" />
-        </div>
-
-        <div class="price-features">
-          <ul class="list-unstyled">
-            <li>Professional Company Corporate video - 3 minutes & 1 Day Shoot (max 4 hours at 1 location)</li>
-            <li>Homepage exposure on .SG portal </li>
-            <li>Gallery Page for Product Images</li>
-            <li>Unlimited Submission of Product Information</li>
-            <li>PDF for downloading</li>
-            <li>Unlimited Submission of Product Information</li>
-            <li>User Login Access for Content and Images management</li>
-            <li>Business Enquiry Form</li>
-            <li>Back-end enquiries tracking </li>
-            <li>One Year Digital Exposure on RG Portal</li>
-            <li>Exposure on RG Official Youku Account</li>
-          </ul>
-        </div><!--price features-->
-        <div class="price-action">
-          <a href='{% url "kick-start" %}?region=0' class="btn btn-theme-bg">Choose plan</a>
-        </div><!--price action-->
-      </div><!--price-wrap-->                   
-    </div><!--price col-->
     </div>
-  </div>
-<div class="divide80"></div>
-  {% endblock %}
+
+    <div class="divide80"></div>
+    <div class="container">
+        <div class="row">
+
+            <div id="grid-container" class="cbp">
+                <div class="cbp-item feature-image">
+                    <div class="cbp-caption">
+                        <div>
+                            <img src="/static/img/video.jpg" alt="">
+                        </div>
+                    </div>
+                    <div>{% trans "Professional corporate video (max 4 hours 1 day shoot at 1 location" %}</div>
+                </div>
+                <div class="cbp-item feature-image">
+                    <div class="cbp-caption">
+                        <div>
+                            <img src="/static/img/productgallery.jpg" alt="">
+                        </div>
+                    </div>
+                    <div>{% trans "Photo gallery for your products and services" %}</div>
+                </div>
+                <div class="cbp-item feature-image">
+                    <div class="cbp-caption">
+                        <div>
+                            <img src="/static/img/productinfo.jpg" alt="">
+                        </div>
+                    </div>
+                    <div>{% trans "Describe your products and services in words" %}</div>
+                </div>
+                <div class="cbp-item feature-image">
+                    <div class="cbp-caption">
+                        <div>
+                            <img src="/static/img/pdf.jpg" alt="">
+                        </div>
+                    </div>
+                    <div>{% trans "Upload catalogues, promotion flyers, etc in PDF format for your customers to download" %}</div>
+                </div>
+                <div class="cbp-item feature-image">
+                    <div class="cbp-caption">
+                        <div>
+                            <img src="/static/img/homepage.jpg" alt="">
+                        </div>
+                    </div>
+                    <div>{% trans "Be featured on RiceGlobal's homepage for a wider exposure" %}</div>
+                </div>
+                <div class="cbp-item feature-image">
+                    <div class="cbp-caption">
+                        <div>
+                            <img src="/static/img/userlogin.jpg" alt="">
+                        </div>
+                    </div>
+                    <div>{% trans "Manage your content easily with our fuss-free user login access" %}</div>
+                </div>
+                <div class="cbp-item feature-image">
+                    <div class="cbp-caption">
+                        <div>
+                            <img src="/static/img/bizenquiry.jpg" alt="">
+                        </div>
+                    </div>
+                    <div>{% trans "Our businuss enquiry form will allow potential customers to get in touch with you easily" %}</div>
+                </div>
+                <div class="cbp-item feature-image">
+                    <div class="cbp-caption">
+                        <div>
+                            <img src="/static/img/exposure.jpg" alt="">
+                        </div>
+                    </div>
+                    <div>{% trans "1-year digital exposure on RiceGlobal" %}</div>
+                </div>
+                <div class="cbp-item feature-image">
+                    <div class="cbp-caption">
+                        <div>
+                            <img src="/static/img/enqtracking.jpg" alt="">
+                        </div>
+                    </div>
+                    <div>{% trans "Track customers' enquries easily with our platform" %}</div>
+                </div>
+                <div class="cbp-item feature-image">
+                    <div class="cbp-caption">
+                        <div>
+                            <img src="/static/img/translation.jpg" alt="">
+                        </div>
+                    </div>
+                    <div>{% trans "Professional translation services to reach out to global audiences are available at a separate cost" %}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#    <div class="col-md-6 margin20 wow animated fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">#}
+    {#      <div class="price-wrap">#}
+    {#        <div class="price-title">#}
+    {#          <h4>China</h4>#}
+    {#        </div><!--price title-->#}
+    {#        <div class="thumbnail">#}
+    {#          <img src="/static/img/pricing-china.png" />#}
+    {#        </div>#}
+    {##}
+    {#        <div class="price-features">#}
+    {#          <ul class="list-unstyled">#}
+    {#            <li>Professional Company Corporate video with Chinese Voiceover - 3 minutes & 1 Day Shoot (max 4 hours at 1 location)</li>#}
+    {#            <li>Homepage exposure on .CN portal </li>#}
+    {#            <li>Gallery Page for Product Images</li>#}
+    {#            <li>Unlimited Submission of Product Information</li>#}
+    {#            <li>PDF for downloading</li>#}
+    {#            <li>Unlimited Submission of Product Information</li>#}
+    {#            <li>User Login Access for Content and Images management</li>#}
+    {#            <li>Business Enquiry Form</li>#}
+    {#            <li>Back-end enquiries tracking </li>#}
+    {#            <li>One Year Digital Exposure on RG Portal</li>#}
+    {#            <li>Exposure on RG Official Youku Account</li>#}
+    {#            <li>Translation Services (Optional as a separate cost)</li>#}
+    {#          </ul>#}
+    {#        </div><!--price features-->#}
+    {#        <div class="price-action">#}
+    {#          <a href='{% url "kick-start" %}?region=1' class="btn btn-theme-bg">Choose plan</a>#}
+    {#        </div><!--price action-->#}
+    {#      </div><!--price-wrap-->                   #}
+    {#    </div><!--price col-->#}
+    {#    <div class="col-md-6 margin20 wow animated fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">#}
+    {#      <div class="price-wrap">#}
+    {#        <div class="price-title">#}
+    {#          <h4>Singapore</h4>#}
+    {#        </div><!--price title-->#}
+    {#        <div class="thumbnail">#}
+    {#          <img src="/static/img/pricing-singapore.png" />#}
+    {#        </div>#}
+    {##}
+    {#        <div class="price-features">#}
+    {#          <ul class="list-unstyled">#}
+    {#            <li>Professional Company Corporate video - 3 minutes & 1 Day Shoot (max 4 hours at 1 location)</li>#}
+    {#            <li>Homepage exposure on .SG portal </li>#}
+    {#            <li>Gallery Page for Product Images</li>#}
+    {#            <li>Unlimited Submission of Product Information</li>#}
+    {#            <li>PDF for downloading</li>#}
+    {#            <li>Unlimited Submission of Product Information</li>#}
+    {#            <li>User Login Access for Content and Images management</li>#}
+    {#            <li>Business Enquiry Form</li>#}
+    {#            <li>Back-end enquiries tracking </li>#}
+    {#            <li>One Year Digital Exposure on RG Portal</li>#}
+    {#            <li>Exposure on RG Official Youku Account</li>#}
+    {#          </ul>#}
+    {#        </div><!--price features-->#}
+    {#        <div class="price-action">#}
+    {#          <a href='{% url "kick-start" %}?region=0' class="btn btn-theme-bg">Choose plan</a>#}
+    {#        </div><!--price action-->#}
+    {#      </div><!--price-wrap-->                   #}
+    {#    </div><!--price col-->#}
+    {#    </div>#}
+
+    <div class="divide80"></div>
+{% endblock %}

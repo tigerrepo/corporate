@@ -77,7 +77,8 @@ class Contact(models.Model):
         return self.title
 
 class Tag(models.Model):
-    name = models.CharField(max_length=32, unique=True)
+    name = models.CharField(max_length=64, unique=True)
+    class_name = models.CharField(max_length=64, unique=True)
     status = models.SmallIntegerField(choices=Account.STATUS_CHOICES, default=1)
     class Meta:
         db_table = 'tag_tab'

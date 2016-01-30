@@ -107,7 +107,7 @@ class CompanyListView(TemplateView):
         company_tag_dict = collections.defaultdict(list)
         tag_company_dict = collections.defaultdict(list)
         for item in models.CompanyTag.objects.select_related("company").all():
-            company_tag_dict[item.company_id].append(item.tag.name)
+            company_tag_dict[item.company_id].append(item.tag.class_name)
             if item.company.status == models.Account.STATUS_ENABLE:
                 tag_company_dict[item.tag_id].append(item.company_id)
 

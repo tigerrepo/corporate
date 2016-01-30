@@ -6051,3 +6051,9 @@ table.shopping-cart-table tr th, table.shopping-cart-table tr td {
 .cbp-caption-active .cbp-caption, .cbp-caption-active .cbp-caption-defaultWrap{
     height:214px;
 }
+
+.feature-image{
+  float: left;
+  width: 380px;
+  height: 260px;
+}
