@@ -444,11 +444,9 @@ p.sub-text {
 }
 
 .navbar-right{
-  margin-top: 40px;
+  margin-top: 15px;
 }
-.navbar>.container .navbar-brand{
-  margin-top: -20px;
-}
+
 .navbar-brand {
   font-weight: 700;
   color: #000 !important;
@@ -472,7 +470,7 @@ p.sub-text {
 }
 
 .navbar-brand img {
-  width: 240px;
+  width: 200px;
   height: auto;
 }
 
@@ -801,6 +799,10 @@ TOP BARS
   -o-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+}
+
+.navbar-toggle{
+  margin-top:20px;
 }
 
 .navbar-collapse .form-group {
@@ -3689,89 +3691,12 @@ Version v1.1 css*
   margin-top: 0px;
 }
 
-/****************************dark heder********************/
-/***********bootstrap navigation default overrides--*/
-.navbar-inverse {
-  font-family: "Lato", sans-serif;
-  border: none;
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
-  -ms-border-radius: 0px;
-  border-radius: 0px;
-  margin-bottom: 0;
-  width: 100%;
-  min-height: 70px;
-  padding: 10px 0;
-  -webkit-box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.1);
-  -ms-box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.1);
-  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.1);
-  background-color: #333;
-  -moz-transition: all 0.4s ease-in-out;
-  -o-transition: all 0.4s ease-in-out;
-  -webkit-transition: all 0.4s ease-in-out;
-  transition: all 0.4s ease-in-out;
+
+.navbar-brand{
+  padding: 0 15px;
 }
 
-.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
-  color: #4f82e9;
-  background-color: transparent;
-}
 
-.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
-  color: #4f82e9;
-  background-color: transparent;
-}
-
-.navbar-inverse .navbar-brand {
-  font-weight: 700;
-  color: #fff !important;
-  font-size: 30px;
-  line-height: 20px;
-  font-style: normal;
-  text-transform: uppercase;
-}
-
-.navbar-inverse .navbar-nav > li > a {
-  color: #fff;
-  font-weight: 400;
-  font-size: 14px;
-  text-transform: uppercase;
-}
-
-.navbar-inverse .navbar-nav > li > a:hover {
-  color: #4f82e9;
-}
-
-#header-top.dark-header-top {
-  background-color: #111;
-  border-bottom-color: #222;
-}
-
-#header-top.dark-header-top .top-bar a i {
-  color: #fff;
-}
-
-#header-top.dark-header-top .top-bar ul li {
-  color: #fff;
-}
-
-/******************transparent header*****************************/
-.navbar-inverse.transparent-header {
-  background-color: transparent;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  -ms-box-shadow: none;
-  box-shadow: none;
-  padding: 10px 0px;
-  min-height: 50px;
-}
-
-@media (max-width: 767px) {
-  .navbar-inverse.transparent-header {
-    background-color: #111 !important;
-  }
-}
 /****************header center*****************/
 .header-center {
   border-top: 1px solid #ddd;
