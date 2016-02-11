@@ -825,7 +825,7 @@ TOP BARS
 }
 
 .btn-lg {
-  padding: 14px 25px 13px 25px;
+  padding: 14px 20px 13px 20px;
   font-size: 13px;
   font-weight: 700;
 }
@@ -5981,4 +5981,8 @@ table.shopping-cart-table tr th, table.shopping-cart-table tr td {
   float: left;
   width: 380px;
   height: 260px;
+}
+
+.navbar-collapse{
+    margin-top:15px;
 }
