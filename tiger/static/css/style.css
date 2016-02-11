@@ -826,7 +826,7 @@ TOP BARS
 
 .btn-lg {
   padding: 14px 20px 13px 20px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
 }
 
@@ -4991,7 +4991,7 @@ table.shopping-cart-table tr th, table.shopping-cart-table tr td {
 
 .intro-text-1 h4 {
   color: #fff;
-  font-size: 20px;
+  font-size: 18px;
   text-transform: uppercase;
   font-weight: 700;
 }
@@ -5002,7 +5002,7 @@ table.shopping-cart-table tr th, table.shopping-cart-table tr td {
 }
 
 .intro-text-1 p {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   color: #999;
 }
