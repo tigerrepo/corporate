@@ -16,8 +16,22 @@
         </div>
     </div>
     <!--breadcrumbs-->
-    <div class="divide80"></div>
+    <div class="divide40"></div>
     <div class="container">
+        <div class="row" style="text-align:center;">
+            <div class="center-heading">
+                <h2>About us</h2>
+                <span class="center-line"></span>
+            </div>
+            <div class="col-md-12">
+                {% if company.logo_url != '' %}
+                    <img src="{{company.logo_url}}" />
+                    <div class="divide20"></div>
+                {% endif %}
+                <h5>{{ company.slogan }}</h5>
+                <p>{{ company.description|safe }}</p>
+             </div>
+        </div>
         {% if youtube_url != '' %}
             <div class="row">
                 <div class="col-md-12">

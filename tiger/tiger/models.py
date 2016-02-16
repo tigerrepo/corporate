@@ -44,7 +44,8 @@ class Company(models.Model):
     tel = models.CharField(max_length=20)
     fax = models.CharField(max_length=20, default='')
     dis_order = models.IntegerField(default=0)
-
+    logo_url = models.CharField(max_length=64)
+    
     class Meta:
         db_table = "company_tab"
 
