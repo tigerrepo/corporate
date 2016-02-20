@@ -80,6 +80,10 @@ class CompanyDetailView(FormView):
         except models.Video.DoesNotExist:
             context['youtube_url'] = ""
         context['pdf_url'] = "%s%s/%s" % (settings.PDF_URL, company.id, company.pdf_url)
+        if company.logo_url:
+            context['logo_url'] = "%s%s/%s" % (settings.LOGO_URL, company.id, company.logo_url)
+        else:
+            context['logo_url'] = ''
         products = models.Product.objects.filter(company=company, status=1)
         product_list = []
         for product in products:
