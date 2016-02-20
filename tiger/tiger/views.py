@@ -109,9 +109,11 @@ class CompanyListView(TemplateView):
         context = super(CompanyListView, self).get_context_data(**kwargs)
 
         company_tag_dict = collections.defaultdict(list)
+        company_tagname_dict = collections.defaultdict(list)
         tag_company_dict = collections.defaultdict(list)
         for item in models.CompanyTag.objects.select_related("company").all():
             company_tag_dict[item.company_id].append(item.tag.class_name)
+            company_tagname_dict[item.company_id].append(item.tag.name)
             if item.company.status == models.Account.STATUS_ENABLE:
                 tag_company_dict[item.tag_id].append(item.company_id)
 
@@ -125,6 +127,7 @@ class CompanyListView(TemplateView):
         for company in companies:
             company_dict = model_to_dict(company)
             company_dict['tag_list'] = ' '.join(company_tag_dict.get(company.id, ['Others']))
+            company_dict['tag_line'] = ', '.join(company_tagname_dict.get(company.id, ['Others']))
             video_tuple = company_video_dict.get(company.id, ('','', ''))
             company_dict['youtube_url'] = "%s%s" % (settings.YOUTUBE_URL_PREFIX, video_tuple[2])
             company_list.append(company_dict)
