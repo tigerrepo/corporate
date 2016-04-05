@@ -21,11 +21,21 @@
 <div class="container">
   <div class="portfolio-cube">
     <div id="filters-container" class="cbp-l-filters-button">
-    </div>
+                <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">
+                    All
+                    <div class="cbp-filter-counter"></div>
+                </div>
+                {% for tag in tags %}
+                    <div data-filter=".{{ tag.class_name }}" class="cbp-filter-item">
+                        {{ tag.name }}
+                        <div class="cbp-filter-counter"></div>
+                    </div>
+                {% endfor %}
+            </div>
     {% include "product_list.html" %}
   </div>
   <div class="divide20"></div>
-  <div class="row gallery-bottom">
+  <!-- <div class="row gallery-bottom">
     <div class="col-sm-6">
       <ul class="pagination">
         {% if products.has_previous %}
@@ -51,7 +61,7 @@
       <em>Displaying page {{products.number}} of {{products.paginator.num_pages}}</em>
     </div>
   </div>
-</div>
+</div> -->
 </div>
 <div class="divide80"></div>
 {% endblock %}

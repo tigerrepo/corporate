@@ -1,4 +1,8 @@
 from django.db import models
+import django.db.models.options as options
+from django.conf import settings
+
+options.DEFAULT_NAMES = options.DEFAULT_NAMES + ('in_db',)
 
 class Account(models.Model):
     username = models.CharField(max_length=32, unique=True)
@@ -23,6 +27,7 @@ class Account(models.Model):
 
     class Meta:
         db_table = "account_tab"
+        in_db = "tiger"
 
     def __unicode__(self):
         return self.username
@@ -48,6 +53,7 @@ class Company(models.Model):
     
     class Meta:
         db_table = "company_tab"
+        in_db = "tiger"
 
     def __unicode__(self):
         return self.name
@@ -61,6 +67,7 @@ class Video(models.Model):
 
     class Meta:
         db_table = "video_tab"
+        in_db = "tiger"
 
 class Contact(models.Model):
     sender = models.CharField(max_length=32)
@@ -73,6 +80,7 @@ class Contact(models.Model):
 
     class Meta:
         db_table = 'contact_tab'
+        in_db = "tiger"
 
     def __unicode__(self):
         return self.title
@@ -83,6 +91,7 @@ class Tag(models.Model):
     status = models.SmallIntegerField(choices=Account.STATUS_CHOICES, default=1)
     class Meta:
         db_table = 'tag_tab'
+        in_db = "tiger"
 
     def __unicode__(self):
         return self.name
@@ -94,6 +103,7 @@ class CompanyTag(models.Model):
     class Meta:
         unique_together = ('company', 'tag')
         db_table = 'company_tag_tab'
+        in_db = "tiger"
 
 class Product(models.Model):
     company = models.ForeignKey(Company, on_delete=models.PROTECT)
@@ -105,6 +115,7 @@ class Product(models.Model):
     class Meta:
         unique_together = ('company', 'name')
         db_table = 'product_tab'
+        in_db = "tiger"
 
     def __unicode__(self):
         return self.name
@@ -118,6 +129,7 @@ class Gallery(models.Model):
     class Meta:
         unique_together = ('name', 'product')
         db_table = 'gallery_tab'
+        in_db = "tiger"
 
     def __unicode__(self):
         return self.name
@@ -140,6 +152,7 @@ class Enquiry(models.Model):
 
     class Meta:
         db_table = 'enquiry_tab'
+        in_db = "tiger"
 
     def __unicode__(self):
         return self.name
@@ -150,3 +163,4 @@ class HotCompany(models.Model):
 
     class Meta:
         db_table = 'hot_company_tab'
+        in_db = "tiger"

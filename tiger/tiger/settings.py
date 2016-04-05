@@ -38,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tiger',
+    'django.contrib.auth',
+    # 'solid_i18n',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -45,18 +47,21 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'solid_i18n.middleware.SolidLocaleMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-# TEMPLATE_CONTEXT_PROCESSORS = (
-    # "django.contrib.auth.context_processors.auth",
-    # "django.core.context_processors.debug",
-    # "django.core.context_processors.i18n",
-    # "django.core.context_processors.media",
-    # "django.core.context_processors.static",
-    # "django.core.context_processors.tz",
-    # "django.contrib.messages.context_processors.messages",
-# )
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    "django.core.context_processors.request",
+    'django.core.context_processors.i18n',
+    'tiger.context_processors.solid_i18n',
+)
 
 ROOT_URLCONF = 'tiger.urls'
 
@@ -68,6 +73,14 @@ WSGI_APPLICATION = 'tiger.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'corporate_auth',
+        'USER': 'root',
+        'PASSWORD' : '123456',
+        'HOST':'',
+        'PORT':3306,
+    },
+    'tiger': {
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'corporate',
         'USER': 'root',
         'PASSWORD' : '123456',
@@ -75,6 +88,8 @@ DATABASES = {
         'PORT':3306,
     }
 }
+
+DATABASE_ROUTERS = ['tiger.routers.CorporateRouter',]
 
 STATIC_URL = '/static/'
 DOMAIN_NAME = 'http://www.riceglobal.com/'
@@ -149,9 +164,15 @@ LOGGING = {
 PAGE_COUNT = 15
 YOUTUBE_URL_PREFIX = 'http://www.youtube.com/embed/'
 
-#LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'en'
+
 LANGUAGES = (
   ('en', 'English'),
-  ('zh_CN', 'Chinese'),
+  ('zh', 'Chinese'),
 )
+
+SOLID_I18N_USE_REDIRECTS = False
+SOLID_I18N_HANDLE_DEFAULT_PREFIX = False
+SOLID_I18N_DEFAULT_PREFIX_REDIRECT = False
+
 

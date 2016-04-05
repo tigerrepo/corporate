@@ -1,4 +1,5 @@
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 <div class="navbar navbar-default navbar-static-top yamm sticky" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -38,8 +39,22 @@
           </form>
         </div>
         </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "Language" %} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            {% if LANGUAGE_CODE == 'en' %}
+              <li><a class="lang_active" href="{{request.get_full_path}}" >English</a></li>
+              <li><a href="/zh{{request.get_full_path}}" >中文</a></li>
+            {% else %}
+              <li><a href="{{request.get_full_path|slice:'3:'}}" >English</a></li>
+              <li><a class="lang_active" href="{{request.get_full_path}}" >中文</a></li>
+            {% endif %}
+          </ul>
+        </li>
+        
       </ul>
     </div>
+                      
     <!--/.nav-collapse -->
   </div>
   <!--container-->

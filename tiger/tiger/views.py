@@ -36,7 +36,7 @@ class IndexView(TemplateView):
             company_dict['tag'] = ','.join(company_tag_dict.get(company.id, ['Others']))
             video_tuple = company_video_dict.get(company.id, ('','', ''))
             company_dict['video_host_url'] = "%s%s" % (settings.VIDEO_URL, video_tuple[0])
-            company_dict['youtube_url'] = "%s%s" % (settings.YOUTUBE_URL_PREFIX, video_tuple[2])
+            company_dict['youtube_url'] = "%s%s?rel=0" % (settings.YOUTUBE_URL_PREFIX, video_tuple[2])
             company_list.append(company_dict)
 
         products = [obj for obj in
@@ -76,7 +76,7 @@ class CompanyDetailView(FormView):
         context['company'] = company
         try:
             video = models.Video.objects.get(company=company)
-            context['youtube_url'] = "%s%s" % (settings.YOUTUBE_URL_PREFIX, video.name)
+            context['youtube_url'] = "%s%s?rel=0" % (settings.YOUTUBE_URL_PREFIX, video.name)
         except models.Video.DoesNotExist:
             context['youtube_url'] = ""
         context['pdf_url'] = "%s%s/%s" % (settings.PDF_URL, company.id, company.pdf_url)
@@ -112,7 +112,8 @@ class CompanyListView(TemplateView):
         company_tagname_dict = collections.defaultdict(list)
         tag_company_dict = collections.defaultdict(list)
         for item in models.CompanyTag.objects.select_related("company").all():
-            company_tag_dict[item.company_id].append(item.tag.class_name)
+            if item.tag.class_name:
+                company_tag_dict[item.company_id].append(item.tag.class_name)
             company_tagname_dict[item.company_id].append(item.tag.name)
             if item.company.status == models.Account.STATUS_ENABLE:
                 tag_company_dict[item.tag_id].append(item.company_id)
@@ -124,12 +125,13 @@ class CompanyListView(TemplateView):
         tags = models.Tag.objects.filter(status=1)
         companies = models.Company.objects.filter(status=1).order_by('name')
         company_list = []
+
         for company in companies:
             company_dict = model_to_dict(company)
             company_dict['tag_list'] = ' '.join(company_tag_dict.get(company.id, ['Others']))
             company_dict['tag_line'] = ', '.join(company_tagname_dict.get(company.id, ['Others']))
             video_tuple = company_video_dict.get(company.id, ('','', ''))
-            company_dict['youtube_url'] = "%s%s" % (settings.YOUTUBE_URL_PREFIX, video_tuple[2])
+            company_dict['youtube_url'] = "%s%s?rel=0" % (settings.YOUTUBE_URL_PREFIX, video_tuple[2])
             company_list.append(company_dict)
         context['tags'] = [tag for tag in tags if tag_company_dict.get(tag.id, [])]
         context['companies'] = company_list
@@ -142,6 +144,15 @@ class ProductListView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ProductListView, self).get_context_data(**kwargs)
 
+        company_tag_dict = collections.defaultdict(list)
+        company_tagname_dict = collections.defaultdict(list)
+        tag_company_dict = collections.defaultdict(list)
+        for item in models.CompanyTag.objects.select_related("company").all():
+            company_tag_dict[item.company_id].append(item.tag.class_name)
+            company_tagname_dict[item.company_id].append(item.tag.name)
+            if item.company.status == models.Account.STATUS_ENABLE:
+                tag_company_dict[item.tag_id].append(item.company_id)
+
         product_cover_image = {}
         for gallery in models.Gallery.objects.all():
             if gallery.is_cover:
@@ -149,6 +160,7 @@ class ProductListView(TemplateView):
         products = [obj for obj in
                     models.Product.objects.select_related("company").filter(status=1).order_by("name")
                     if obj.company.status == models.Account.STATUS_ENABLE]
+        
         product_list = []
         for product in products:
             product_dict = model_to_dict(product)
@@ -156,20 +168,24 @@ class ProductListView(TemplateView):
                 cover_image = "%s%s/%s" % (settings.IMAGE_URL_PREFIX, product.id, product_cover_image[product.id])
             else:
                 cover_image = '%sdefault.jpg' % settings.IMAGE_URL_PREFIX
+            company = product.company
+            product_dict['tag_list'] = ' '.join(company_tag_dict.get(company.id, ['Others']))
+            product_dict['tag_line'] = ', '.join(company_tagname_dict.get(company.id, ['Others']))
             product_dict['cover_image'] = cover_image
             product_dict['company_name'] = product.company.name
             product_dict['create_date'] = product.create_date
             product_list.append(product_dict)
 
-        paginator = Paginator(product_list, settings.PAGE_COUNT)
-        page = self.request.GET.get('page')
-        try:
-            product_list = paginator.page(page)
-        except PageNotAnInteger:
-            product_list = paginator.page(1)
-        except EmptyPage:
-            product_list = paginator.page(paginator.num_pages)
-
+        # paginator = Paginator(product_list, settings.PAGE_COUNT)
+        # page = self.request.GET.get('page')
+        # try:
+        #     product_list = paginator.page(page)
+        # except PageNotAnInteger:
+        #     product_list = paginator.page(1)
+        # except EmptyPage:
+        #     product_list = paginator.page(paginator.num_pages)
+        tags = models.Tag.objects.filter(status=1)
+        context['tags'] = [tag for tag in tags if tag_company_dict.get(tag.id, [])]
         context['products'] = product_list
         context['url_path'] = 'product'
         return context

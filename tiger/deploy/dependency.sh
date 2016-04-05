@@ -17,3 +17,6 @@ mkdir -p /var/www/cdn.riceglobal.com/video/
 mkdir -p /var/www/cdn.riceglobal.com/static/
 mkdir -p /var/www/cdn.riceglobal.com/pdf/
 mkdir -p /var/log/www.riceglobal.com/
+
+
+pip install solid_i18n

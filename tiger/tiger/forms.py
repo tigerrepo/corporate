@@ -1,5 +1,5 @@
 from django import forms
-from django.forms.util import ErrorList
+from django.forms.utils import ErrorList
 from tiger import models
 
 class SearchForm(forms.Form):

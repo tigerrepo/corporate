@@ -1,6 +1,6 @@
 <div id="grid-container" class="cbp">
   {% for product in products %}
-  <div class="cbp-item dsa">
+  <div class="cbp-item {{product.tag_list}}">
     <div class="cbp-caption">
       <div class="cbp-caption-defaultWrap">
         <img src="{{product.cover_image}}" alt="">
