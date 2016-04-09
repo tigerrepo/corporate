@@ -1,24 +1,24 @@
 from django.db import models
 import django.db.models.options as options
-from django.conf import settings
 
 options.DEFAULT_NAMES = options.DEFAULT_NAMES + ('in_db',)
+
 
 class Account(models.Model):
     username = models.CharField(max_length=32, unique=True)
     email = models.CharField(max_length=32, unique=True)
     password = models.CharField(max_length=64)
     salt = models.CharField(max_length=32)
-    STATUS_ENABLE=1
-    STATUS_DISABLE=0
+    STATUS_ENABLE = 1
+    STATUS_DISABLE = 0
     STATUS_CHOICES = (
         (STATUS_ENABLE, 'Activated'),
         (STATUS_DISABLE, 'Deactivated'),
     )
     status = models.SmallIntegerField(choices=STATUS_CHOICES, default=1)
     create_time = models.DateTimeField(auto_now_add=True)
-    ACCOUNT_TYPE_ADMIN=0
-    ACCOUNT_TYPE_CUSTOMER=1
+    ACCOUNT_TYPE_ADMIN = 0
+    ACCOUNT_TYPE_CUSTOMER = 1
     ACCOUNT_TYPE_CHOICES = (
         (ACCOUNT_TYPE_CUSTOMER, u'Customer Admin'),
         (ACCOUNT_TYPE_ADMIN, u'System Admin'),
@@ -31,6 +31,7 @@ class Account(models.Model):
 
     def __unicode__(self):
         return self.username
+
 
 class Company(models.Model):
     name = models.CharField(max_length=32, unique=True)
@@ -58,6 +59,7 @@ class Company(models.Model):
     def __unicode__(self):
         return self.name
 
+
 class Video(models.Model):
     name = models.CharField(max_length=32)
     description = models.CharField(max_length=1024)
@@ -68,6 +70,7 @@ class Video(models.Model):
     class Meta:
         db_table = "video_tab"
         in_db = "tiger"
+
 
 class Contact(models.Model):
     sender = models.CharField(max_length=32)
@@ -85,16 +88,19 @@ class Contact(models.Model):
     def __unicode__(self):
         return self.title
 
+
 class Tag(models.Model):
     name = models.CharField(max_length=64, unique=True)
     class_name = models.CharField(max_length=64, unique=True)
     status = models.SmallIntegerField(choices=Account.STATUS_CHOICES, default=1)
+
     class Meta:
         db_table = 'tag_tab'
         in_db = "tiger"
 
     def __unicode__(self):
         return self.name
+
 
 class CompanyTag(models.Model):
     company = models.ForeignKey(Company, on_delete=models.PROTECT)
@@ -104,6 +110,7 @@ class CompanyTag(models.Model):
         unique_together = ('company', 'tag')
         db_table = 'company_tag_tab'
         in_db = "tiger"
+
 
 class Product(models.Model):
     company = models.ForeignKey(Company, on_delete=models.PROTECT)
@@ -120,6 +127,7 @@ class Product(models.Model):
     def __unicode__(self):
         return self.name
 
+
 class Gallery(models.Model):
     name = models.CharField(max_length=64)
     image_url = models.ImageField(upload_to='gallery/%Y%m%d', max_length=64)
@@ -134,13 +142,14 @@ class Gallery(models.Model):
     def __unicode__(self):
         return self.name
 
+
 class Enquiry(models.Model):
     name = models.CharField(max_length=64)
     company = models.CharField(max_length=128)
     email = models.CharField(max_length=64)
     mobile = models.CharField(max_length=20)
-    REGION_TYPE_SG=0
-    REGION_TYPE_CN=1
+    REGION_TYPE_SG = 0
+    REGION_TYPE_CN = 1
     REGION_TYPE_CHOICES = (
         (REGION_TYPE_SG, u'Singapore'),
         (REGION_TYPE_CN, u'China'),
@@ -156,6 +165,7 @@ class Enquiry(models.Model):
 
     def __unicode__(self):
         return self.name
+
 
 class HotCompany(models.Model):
     company = models.ForeignKey(Company, on_delete=models.PROTECT)

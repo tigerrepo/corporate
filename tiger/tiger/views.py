@@ -1,27 +1,33 @@
-import collections
-import json
 from django.core.cache import cache
 
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from django.core.urlresolvers import reverse
 from django.forms.models import model_to_dict
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
-from django.shortcuts import Http404, get_object_or_404, redirect, render
-from django.utils.timezone import localtime, now
+from django.http import HttpResponse, HttpResponseForbidden
+from django.shortcuts import Http404, get_object_or_404, render
 from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, FormView
+from django.views.generic.edit import FormView
 
-from tiger import forms, models, settings
-import  logging
+import forms
+import models
+import settings
+import logging
+import collections
+
+# from django.utils.timezone import localtime, now
+# from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+# from django.core.urlresolvers import reverse
+# import json
 
 logger = logging.getLogger('main')
 
+
 class IndexView(TemplateView):
     template_name = "index.html"
+
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        companies = models.Company.objects.filter(status=models.Account.STATUS_ENABLE, is_index=True).order_by("dis_order")
+        companies = models.Company.objects.\
+            filter(status=models.Account.STATUS_ENABLE, is_index=True).order_by("dis_order")
 
         company_tag_dict = collections.defaultdict(list)
         for item in models.CompanyTag.objects.all():
@@ -34,7 +40,7 @@ class IndexView(TemplateView):
         for company in companies:
             company_dict = model_to_dict(company)
             company_dict['tag'] = ','.join(company_tag_dict.get(company.id, ['Others']))
-            video_tuple = company_video_dict.get(company.id, ('','', ''))
+            video_tuple = company_video_dict.get(company.id, ('', '', ''))
             company_dict['video_host_url'] = "%s%s" % (settings.VIDEO_URL, video_tuple[0])
             company_dict['youtube_url'] = "%s%s?rel=0" % (settings.YOUTUBE_URL_PREFIX, video_tuple[2])
             company_list.append(company_dict)
@@ -61,6 +67,7 @@ class IndexView(TemplateView):
         context['latest'] = product_list
         context['url_path'] = 'index'
         return context
+
 
 class CompanyDetailView(FormView):
     template_name = "company_detail.html"
@@ -102,6 +109,7 @@ class CompanyDetailView(FormView):
         context['url_path'] = 'business'
         return context
 
+
 class CompanyListView(TemplateView):
     template_name = "company.html"
 
@@ -130,7 +138,7 @@ class CompanyListView(TemplateView):
             company_dict = model_to_dict(company)
             company_dict['tag_list'] = ' '.join(company_tag_dict.get(company.id, ['Others']))
             company_dict['tag_line'] = ', '.join(company_tagname_dict.get(company.id, ['Others']))
-            video_tuple = company_video_dict.get(company.id, ('','', ''))
+            video_tuple = company_video_dict.get(company.id, ('', '', ''))
             company_dict['youtube_url'] = "%s%s?rel=0" % (settings.YOUTUBE_URL_PREFIX, video_tuple[2])
             company_list.append(company_dict)
         context['tags'] = [tag for tag in tags if tag_company_dict.get(tag.id, [])]
@@ -139,8 +147,10 @@ class CompanyListView(TemplateView):
         logger.info("data:%s", context)
         return context
 
+
 class ProductListView(TemplateView):
     template_name = "product.html"
+
     def get_context_data(self, **kwargs):
         context = super(ProductListView, self).get_context_data(**kwargs)
 
@@ -190,6 +200,7 @@ class ProductListView(TemplateView):
         context['url_path'] = 'product'
         return context
 
+
 class ProductDetailView(DetailView):
     template_name = "product_detail.html"
     model = models.Product
@@ -199,7 +210,7 @@ class ProductDetailView(DetailView):
         if self.object.status != 1 or self.object.company.status != 1:
             raise Http404
 
-        galleries =  models.Gallery.objects.filter(product=self.object)
+        galleries = models.Gallery.objects.filter(product=self.object)
         gallery_list = []
         for gallery in galleries:
             d = model_to_dict(gallery)
@@ -208,6 +219,7 @@ class ProductDetailView(DetailView):
         context['url_path'] = 'product'
         context['galleries'] = gallery_list
         return context
+
 
 class ContactView(FormView):
     form_class = forms.ContactForm
@@ -226,13 +238,14 @@ class ContactView(FormView):
         cache.set(ip, 1, 300)
         return HttpResponse("0")
 
+
 class JoinUsView(FormView):
     form_class = forms.JoinUsForm
     template_name = "enquiry.html"
     success_url = "/success"
 
     def get_initial(self):
-        initials = {}
+        initials = dict()
         initials['region'] = self.request.GET.get('region', None)
         return initials
 
@@ -250,6 +263,7 @@ class JoinUsView(FormView):
         cache.set(ip, 1, 300)
         return super(JoinUsView, self).form_valid(form)
 
+
 class PriceView(TemplateView):
     template_name = "pricing.html"
 
@@ -257,6 +271,7 @@ class PriceView(TemplateView):
         context = super(PriceView, self).get_context_data(**kwargs)
         context['url_path'] = 'price'
         return context
+
 
 class SearchView(FormView):
     form_class = forms.SearchForm

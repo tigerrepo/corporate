@@ -1,9 +1,11 @@
 from django import forms
 from django.forms.utils import ErrorList
-from tiger import models
+import models
+
 
 class SearchForm(forms.Form):
     keyword = forms.CharField()
+
 
 class ContactForm(forms.ModelForm):
     company_id = forms.IntegerField()
@@ -12,7 +14,7 @@ class ContactForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ContactForm, self).__init__(*args, **kwargs)
         for field in self:
-            field.field.widget.attrs['class']='form-control'
+            field.field.widget.attrs['class'] = 'form-control'
 
         self.fields['sender'].widget.attrs['placeholder'] = 'Please enter your name.'
         self.fields['title'].widget.attrs['placeholder'] = 'Please enter a title.'
@@ -27,7 +29,7 @@ class ContactForm(forms.ModelForm):
 
     def clean_email(self):
         email = self.cleaned_data['email']
-        if not "@" in email or not '.' in email:
+        if "@" not in email or '.' not in email:
             raise forms.ValidationError('Email is not valid')
         return email
 
@@ -37,10 +39,11 @@ class ContactForm(forms.ModelForm):
 
 class JoinUsForm(forms.ModelForm):
     remarks = forms.CharField(widget=forms.Textarea)
+
     def __init__(self, *args, **kwargs):
         super(JoinUsForm, self).__init__(*args, **kwargs)
         for field in self:
-            field.field.widget.attrs['class']='form-control'
+            field.field.widget.attrs['class'] = 'form-control'
 
         self.fields['name'].widget.attrs['placeholder'] = 'Please input your name'
         self.fields['company'].widget.attrs['placeholder'] = 'Please input the company name'
@@ -51,11 +54,11 @@ class JoinUsForm(forms.ModelForm):
 
     class Meta:
         model = models.Enquiry
-        fields = ['name', 'company', 'mobile', 'email', 'region', 'remarks' ]
+        fields = ['name', 'company', 'mobile', 'email', 'region', 'remarks']
 
     def clean_email(self):
         email = self.cleaned_data['email']
-        if not "@" in email or not '.' in email:
+        if "@" not in email or '.' not in email:
             raise forms.ValidationError('Email is not valid')
         return email
 

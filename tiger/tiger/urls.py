@@ -3,7 +3,8 @@ from django.views.decorators.csrf import csrf_exempt
 from solid_i18n.urls import solid_i18n_patterns
 from views import *
 
-urlpatterns = solid_i18n_patterns('',
+urlpatterns = solid_i18n_patterns(
+    '',
     url(r'^index$', IndexView.as_view(), name='home'),
     url(r'^business/(?P<company_name>\w+)$', CompanyDetailView.as_view(), name='company-detail'),
     url(r'^business$', CompanyListView.as_view(), name='company-list'),
