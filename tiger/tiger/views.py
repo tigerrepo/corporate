@@ -91,7 +91,7 @@ class CompanyDetailView(FormView):
         pdf_urls = []
         for pdf in pdfs:
             pdf_url = "%s%s/%s" % (settings.PDF_URL, company.id, pdf.url)
-            pdf_urls.append(pdf_url)
+            pdf_urls.append((pdf_url, pdf.name))
         context['pdf_urls'] = pdf_urls
         print pdf_urls
         if company.logo_url:

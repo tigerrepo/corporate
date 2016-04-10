@@ -100,15 +100,18 @@
                 {% if company.fax != "" %}
                     <li><p><strong><i class="fa fa-print"></i></strong> {{ company.fax }}</p></li>
                 {% endif %}
-
             </ul>
-            <div>
-{#                {% for pdf in pdf_urls %}#}
-{#                    <iframe width="40%" height="100%" name="plugin"#}
-{#                           src="http://cdn.riceglobal.com.sg/pdf/6/ewciSuM7.pdf" type="application/pdf">#}
-{#                {% endfor %}#}
-            </div>
             <div class="divide40"></div>
+            <h3 class="heading">{% trans "PDF Download" %}</h3>
+            <ul class="list-unstyled">
+                {% for pdf, name in pdf_urls %}
+                    <li style="margin-bottom: 5px;">
+                        <strong><i class="fa fa-download" style="color:#00afef;"></i> </strong>
+                        <a href="{{ pdf }}" style="text-decoration: underline;color:#00afef;">{{ name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+
             <!--<h4>Get social</h4>-->
             <!--<ul class="list-inline social-1">-->
             <!--<li><a href="#"><i class="fa fa-facebook"></i></a></li>-->
