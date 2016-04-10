@@ -1,3 +1,4 @@
+{% load i18n %}
 <div class="fullwidthbanner">
             <div class="tp-banner">
                 <ul>
@@ -11,7 +12,7 @@
                              data-speed="1000"
                              data-start="1000"
                              data-easing="easeOutExpo" style="font-size:2em;">
-                            A B2B VIDEO PLATFORM
+                            {% trans "A B2B VIDEO PLATFORM" %}
                         </div>
 
                         <div class="caption title-2 sft"
@@ -20,7 +21,7 @@
                              data-speed="1000"
                              data-start="1800"
                              data-easing="easeOutExpo" >
-                            TRADE + DEVELOP LOCALLY & GLOBALLY
+                            {% trans "TRADE + DEVELOP LOCALLY & GLOBALLY" %}
                         </div>
                      
                     </li>
@@ -35,7 +36,7 @@
                              data-speed="1000"
                              data-start="1000"
                              data-easing="easeOutExpo" style="font-size:2em;">
-                            MARKETING MADE EASY
+                            {% trans "MARKETING MADE EASY" %}
                         </div>
 
                         <div class="caption title-2 sft"
@@ -44,7 +45,7 @@
                              data-speed="1000"
                              data-start="1800"
                              data-easing="easeOutExpo" >
-                            FUSS-FREE HOLISTIC SOLUTION
+                            {% trans "FUSS-FREE HOLISTIC SOLUTION" %}
                         </div>
 
                     </li>
@@ -58,7 +59,7 @@
                              data-speed="1000"
                              data-start="1000"
                              data-easing="easeOutExpo" style="font-size:2em;color:black;">
-                            DISCOVER AND CONNECT
+                            {% trans "DISCOVER AND CONNECT" %}
                         </div>
 
                         <div class="caption title-2 sft"
@@ -67,7 +68,7 @@
                              data-speed="1000"
                              data-start="1800"
                              data-easing="easeOutExpo" style="color:black;">
-                            MEET NEW CLIENTS AND SUPPLIERS
+                            {% trans "MEET NEW CLIENTS AND SUPPLIERS" %}
                         </div>
 
                     </li>
@@ -78,14 +79,14 @@
     <div class="container">
         <div class="row">
             <div style="float:left; margin-left:20px;">
-                <h4>Be seen globally
+                <h4>{% trans "Be seen globally" %}
                 </h4>
                 <p>
-                    Maximise your outreach
+                    {% trans "Maximise your outreach" %}
                 </p>
             </div>
             <div style="float:right; margin-right:20px;">
-                <a href="{% url "kick-start" %}" class="btn btn-theme-bg btn-lg">Kickstart Now</a>
+                <a href="{% url "kick-start" %}" class="btn btn-theme-bg btn-lg">{% trans "Kickstart Now" %}</a>
             </div>
         </div>
     </div>

@@ -1,21 +1,23 @@
+{% load i18n %}
 <div id="grid-container" class="cbp">
   {% for product in products %}
-  <div class="cbp-item {{product.tag_list}}">
-    <div class="cbp-caption">
-      <div class="cbp-caption-defaultWrap">
-        <img src="{{product.cover_image}}" alt="">
-      </div>
-      <div class="cbp-caption-activeWrap">
-        <div class="cbp-l-caption-alignCenter">
-          <div class="cbp-l-caption-body">
-            <a href="{% url 'product-detail' product.id %}" class="cbp-l-caption-buttonLeft">more info</a>
-            <a href="{{product.cover_image}}" class="cbp-lightbox cbp-l-caption-buttonRight" data-title="{{product.name}}<br> {{product.create_date}}">view larger</a>
+      <div class="cbp-item {{product.tag_list}}">
+        <div class="cbp-caption">
+          <div class="cbp-caption-defaultWrap">
+            <img src="{{product.cover_image}}" alt="">
+          </div>
+          <div class="cbp-caption-activeWrap">
+            <div class="cbp-l-caption-alignCenter">
+              <div class="cbp-l-caption-body">
+                <a href="{% url 'product-detail' product.id %}" class="cbp-l-caption-buttonLeft">{% trans "more info" %}</a>
+                <a href="{{product.cover_image}}" class="cbp-lightbox cbp-l-caption-buttonRight" data-title="{{product.name}}<br>
+                {{product.create_date}}">{% trans "view larger" %}</a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="cbp-l-grid-projects-title"><a href="{% url 'product-detail' product.id %}">{{product.name}}</a></div>
-{#    <div class="cbp-l-grid-projects-desc">{{product.description}}</div>#}
+        <div class="cbp-l-grid-projects-title"><a href="{% url 'product-detail' product.id %}">{{product.name}}</a></div>
+    {#    <div class="cbp-l-grid-projects-desc">{{product.description}}</div>#}
   </div>
   {% endfor %}
 </div>

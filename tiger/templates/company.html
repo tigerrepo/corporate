@@ -1,17 +1,17 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block content %}
 
     <div class="breadcrumb-wrap">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <h4>Industries</h4>
+                    <h4>{% trans "INDUSTRIES" %}</h4>
                 </div>
                 <div class="col-sm-6 hidden-xs text-right">
                     <ol class="breadcrumb">
-                        <li><a href='{% url "home" %}'>HOME</a></li>
-                        <li>INDUSTRIES</li>
+                        <li><a href='{% url "home" %}'>{% trans "HOME" %}</a></li>
+                        <li>{% trans "INDUSTRIES" %}</li>
                     </ol>
                 </div>
             </div>

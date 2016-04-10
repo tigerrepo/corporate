@@ -5,12 +5,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <h4>JOIN US</h4>
+                    <h4>{% trans "JOIN US" %}</h4>
                 </div>
                 <div class="col-sm-6 hidden-xs text-right">
                     <ol class="breadcrumb">
-                        <li><a href='{% url "home" %}'>HOME</a></li>
-                        <li>JOIN US</li>
+                        <li><a href='{% url "home" %}'>{% trans "HOME" %}</a></li>
+                        <li>{% trans "JOIN US" %}</li>
                     </ol>
                 </div>
             </div>
@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="center-heading">
-                        <h2>Join Us</h2>
+                        <h2>{% trans "JOIN US" %}</h2>
                         <span class="center-line"></span>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
 
                 </div>
                 <p class="margin30">
-                    We are waiting for you!
+                    {% trans "We are waiting for you!" %}
                 </p>
 
                 <form name="sentMessage" action='{% url "kick-start" %}' id="contactForm" method="post" novalidate="">

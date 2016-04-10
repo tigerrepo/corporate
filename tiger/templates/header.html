@@ -14,26 +14,26 @@
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li {% ifequal 'index' url_path %} class="active" {%endifequal%}>
-        <a href="{% url 'home' %}" >{% trans "Home" %} </a>
+        <a href="{% url 'home' %}" >{% trans "HOME" %} </a>
         </li>
         <li {% ifequal 'business' url_path %} class="active" {%endifequal%}>
-        <a href="{% url 'company-list' %}" >{% trans "Industries" %} </a>
+        <a href="{% url 'company-list' %}" >{% trans "INDUSTRIES" %} </a>
         </li>
         <li {% ifequal 'product' url_path %} class="active" {%endifequal%}>
-        <a href="{% url 'product-list' %}" >{% trans "Products" %} </a>
+        <a href="{% url 'product-list' %}" >{% trans "PRODUCTS" %} </a>
         </li>
         <li {% ifequal 'price' url_path %} class="active" {%endifequal%}>
-        <a href="{% url 'price-detail' %}" >{% trans "Features" %} </a>
+        <a href="{% url 'price-detail' %}" >{% trans "FEATURES" %} </a>
         </li>
         <li>
-        <a target="_blank" href="http://blog.riceglobal.com.sg" >{% trans "Learn" %} </a>
+        <a target="_blank" href="http://blog.riceglobal.com.sg" >{% trans "LEARN" %} </a>
         </li>
         <li>
         <div class="pull-right">
           <form action='{% url "search" %}' method="post" novalidate="" >
             {% csrf_token %}
             <div class="form-group">
-              <input name="keyword" type="text" class="form-control" placeholder="search..." id="id_keyword">
+              <input name="keyword" type="text" class="form-control" placeholder="{% trans 'search...' %}" id="id_keyword">
               <button type="submit"><i class="fa fa-search"></i></button>
             </div>
           </form>

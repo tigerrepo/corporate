@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block content %}
     <div class="breadcrumb-wrap">
         <div class="container">
@@ -8,8 +9,8 @@
                 </div>
                 <div class="col-sm-6 hidden-xs text-right">
                     <ol class="breadcrumb">
-                        <li><a href="{% url 'home' %}">HOME</a></li>
-                        <li>INDUSTRIES</li>
+                        <li><a href="{% url 'home' %}">{% trans "HOME" %}</a></li>
+                        <li>{% trans "INDUSTRIES" %}</li>
                     </ol>
                 </div>
             </div>
@@ -20,7 +21,7 @@
     <div class="container">
         <div class="row" style="text-align:center;">
             <div class="center-heading">
-                <h2>About us</h2>
+                <h2>{% trans "ABOUT US" %}</h2>
                 <span class="center-line"></span>
             </div>
             <div class="col-md-12">
@@ -36,7 +37,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="center-heading">
-                        <h2>Video</h2>
+                        <h2>{% trans "VIDEO" %}</h2>
                         <span class="center-line"></span>
                     </div>
                 </div>
@@ -53,7 +54,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="center-heading">
-                        <h2>Our Products/Services</h2>
+                        <h2>{% trans "Our Products/Services" %}</h2>
                         <span class="center-line"></span>
                     </div>
                 </div>

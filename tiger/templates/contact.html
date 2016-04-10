@@ -16,7 +16,7 @@
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 controls">
                                     <label>{% trans "Name" %}<span>*</span></label>
-                                    <input type="text" class="form-control" placeholder="Name" id="id_sender"
+                                    <input type="text" class="form-control" placeholder={% trans "Name" %} id="id_sender"
                                            name="sender" required=""
                                            data-validation-required-message="Please enter your name.">
 
@@ -29,7 +29,7 @@
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 controls">
                                     <label>{% trans "Email Address" %}<span>*</span></label>
-                                    <input type="email" class="form-control" placeholder="Email Address" id="id_email"
+                                    <input type="email" class="form-control" placeholder={% trans "Email Address" %} id="id_email"
                                            name="email" required=""
                                            data-validation-required-message="Please enter your email address.">
 
@@ -41,7 +41,7 @@
                     <div class="row control-group">
                         <div class="form-group col-xs-12  controls">
                             <label>{% trans "Phone Number" %}<span>*</span></label>
-                            <input type="tel" class="form-control" placeholder="Phone Number" id="id_mobile"
+                            <input type="tel" class="form-control" placeholder={% trans "Phone Number" %} id="id_mobile"
                                    name="mobile" required=""
                                    data-validation-required-message="Please enter your phone number.">
 
@@ -51,7 +51,7 @@
                     <div class="row control-group">
                         <div class="form-group col-xs-12  controls">
                             <label>{% trans "Title" %}<span>*</span></label>
-                            <input type="text" class="form-control" placeholder="Title" id="id_title" name="title"
+                            <input type="text" class="form-control" placeholder={% trans "Title" %} id="id_title" name="title"
                                    required="" data-validation-required-message="Please enter a title.">
 
                             <p class="help-block"></p>
@@ -62,7 +62,7 @@
                     <div class="row control-group">
                         <div class="form-group col-xs-12 controls">
                             <label>{% trans "Message" %}<span>*</span></label>
-                            <textarea rows="5" class="form-control" placeholder="Message" id="id_content" name="content"
+                            <textarea rows="5" class="form-control" placeholder={% trans "Message" %} id="id_content" name="content"
                                       required="" data-validation-required-message="Please enter a message."></textarea>
 
                             <p class="help-block"></p>

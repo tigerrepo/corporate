@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block content %}
 
 <div class="breadcrumb-wrap">
@@ -9,7 +10,7 @@
       </div>
       <div class="col-sm-6 hidden-xs text-right">
         <ol class="breadcrumb">
-          <li><a href="{% url 'home' %}">HOME</a></li>
+          <li><a href="{% url 'home' %}">{% trans "HOME" %}</a></li>
           <li><a href="{% url 'company-detail' product.company.url%}">{{product.company.name}}</a></li>
           <li>{{product.name}}</li>
         </ol>
@@ -43,7 +44,7 @@
         {{product.description|safe}}
         </p>
         <hr>
-        <p><a href="javascript:window.history.back();" class="btn btn-lg btn-theme-bg">Back</a></p>
+        <p><a href="javascript:window.history.back();" class="btn btn-lg btn-theme-bg">{% trans "Back" %}</a></p>
         <hr>
       </div>
     </div>
