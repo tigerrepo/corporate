@@ -1,22 +1,19 @@
 class CorporateRouter(object):
     """Allows each model to set its own destiny"""
 
-    @staticmethod
-    def db_for_read(model):
+    def db_for_read(self, model, **hint):
         # Specify target database with field in_db in model's Meta class
         if hasattr(model._meta, 'in_db'):
             return model._meta.in_db
         return 'default'
 
-    @staticmethod
-    def db_for_write(model):
+    def db_for_write(self, model, **hint):
         # Specify target database with field in_db in model's Meta class
         if hasattr(model._meta, 'in_db'):
             return model._meta.in_db
         return 'default'
 
-    @staticmethod
-    def allow_syncdb(db, model):
+    def allow_syncdb(self, db, model, **hint):
         # Specify target database with field in_db in model's Meta class
         if hasattr(model._meta, 'in_db'):
             if model._meta.in_db == db:

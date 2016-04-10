@@ -86,7 +86,14 @@ class CompanyDetailView(FormView):
             context['youtube_url'] = "%s%s?rel=0" % (settings.YOUTUBE_URL_PREFIX, video.name)
         except models.Video.DoesNotExist:
             context['youtube_url'] = ""
-        context['pdf_url'] = "%s%s/%s" % (settings.PDF_URL, company.id, company.pdf_url)
+
+        pdfs = models.PDF.objects.filter(company=company, status=1)
+        pdf_urls = []
+        for pdf in pdfs:
+            pdf_url = "%s%s/%s" % (settings.PDF_URL, company.id, pdf.url)
+            pdf_urls.append(pdf_url)
+        context['pdf_urls'] = pdf_urls
+        print pdf_urls
         if company.logo_url:
             context['logo_url'] = "%s%s/%s" % (settings.LOGO_URL, company.id, company.logo_url)
         else:

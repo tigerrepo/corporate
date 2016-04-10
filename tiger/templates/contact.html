@@ -90,14 +90,24 @@
                 <li><p><strong><i class="fa fa-envelope"></i></strong> <a
                         href="mailto:{{ company.email }}">{{ company.email }}</a></p></li>
                 <li><p><strong><i class="fa fa-phone"></i> </strong> {{ company.tel }}</p></li>
+                {% if company.tel_opt != "" %}
+                    <li><p><strong><i class="fa fa-phone"></i> </strong> {{ company.tel_opt }}</p></li>
+                {% endif %}
+                {% if company.open_from and company.open_to %}
+                    <li><p><strong><i class="fa fa-info-circle"></i> </strong>
+                        {{ company.open_from }} to {{ company.open_to }}</p></li>
+                {% endif %}
                 {% if company.fax != "" %}
                     <li><p><strong><i class="fa fa-print"></i></strong> {{ company.fax }}</p></li>
                 {% endif %}
-                {% if company.pdf_url != "" %}
-                    <li><p><strong><i class="fa fa-download"></i></strong> <a target="_blank" href={{ pdf_url }}>Download</a>
-                    </li>
-                {% endif %}
+
             </ul>
+            <div>
+{#                {% for pdf in pdf_urls %}#}
+{#                    <iframe width="40%" height="100%" name="plugin"#}
+{#                           src="http://cdn.riceglobal.com.sg/pdf/6/ewciSuM7.pdf" type="application/pdf">#}
+{#                {% endfor %}#}
+            </div>
             <div class="divide40"></div>
             <!--<h4>Get social</h4>-->
             <!--<ul class="list-inline social-1">-->
