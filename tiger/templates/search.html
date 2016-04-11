@@ -40,15 +40,31 @@
   <div class="row">
     <div class="col-sm-12">
       {% if searched %}
-        <span class="results-number">{% trans "Search for" %} <span style="color:red;">{{ keyword }}</span>, {% trans "about" %} {{ r_count }} {% trans "results found" %}</span>
+        <span class="results-number">{% trans "Search for" %} <span style="color:red;">{{ keyword }}</span>,
+            {% trans "about" %} {{ r_count_company }} {% trans "companies found" %},
+            {% trans "about" %} {{ r_count_product }} {% trans "products found" %}
+        </span>
       {% endif %}
-      {% for r in results %}
+     </div>
+    <div class="col-sm-6">
+        <h5><i style="display:inline-block;background-image: url('/static/img/company.png');width: 16px;height: 16px; margin-right:5px;"></i>{% trans "Company" %}</h5>
+      {% for r in companies %}
       <div class="results-box">
         <h3><a href='{% url "company-detail" r.url %}'>{{ r.name  }}</a></h3>
-        <p>{{ r.description }}</p>
+        <p>{{ r.description|safe }}</p>
       </div>
       <hr>
-      {% endfor %} 
+      {% endfor %}
+    </div>
+   <div class="col-sm-6">
+    <h5><i style="display:inline-block;background-image: url('/static/img/product.png');width: 16px;height: 16px; margin-right:5px;"></i>{% trans "Product" %}</h5>
+      {% for r in products %}
+      <div class="results-box">
+        <h3><a href='{% url "product-detail" r.id %}'>{{ r.name  }}</a></h3>
+        <p>{{ r.description|safe }}</p>
+      </div>
+      <hr>
+      {% endfor %}
     </div>
   </div>
 </div>

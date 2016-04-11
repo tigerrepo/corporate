@@ -292,9 +292,11 @@ class SearchView(FormView):
     def form_valid(self, form):
         keyword = form.cleaned_data['keyword']
         context = self.get_context_data()
-        context['results'] = models.Company.objects.filter(name__contains=keyword)
+        context['companies'] = models.Company.objects.filter(name__icontains=keyword)
+        context['products'] = models.Product.objects.filter(name__icontains=keyword)
         context['keyword'] = keyword
-        context['r_count'] = len(context['results'])
+        context['r_count_company'] = len(context['companies'])
+        context['r_count_product'] = len(context['products'])
         context['searched'] = True
         return render(self.request, self.template_name, context)
 
