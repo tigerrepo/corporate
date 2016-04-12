@@ -6034,6 +6034,12 @@ table.shopping-cart-table tr th, table.shopping-cart-table tr td {
   position: relative;
   left:200px;
 }
+.feature-words-3 h3{
+  color:#ffffff;
+}
+.feature-words-3 p{
+  color:#ffffff;
+}
 .feature-bg-4{
   background:#ffffff url(../img/slice_04.jpg) no-repeat;
   width: 1000px;
