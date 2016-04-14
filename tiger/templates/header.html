@@ -28,6 +28,9 @@
         <li>
         <a target="_blank" href="http://blog.riceglobal.com.sg" >{% trans "LEARN" %} </a>
         </li>
+        <li {% ifequal 'support' url_path %} class="active" {%endifequal%}>
+        <a href="{% url 'support' %}" >{% trans "SUPPORT" %} </a>
+        </li>
         <li>
         <div class="pull-right">
           <form action='{% url "search" %}' method="post" novalidate="" >
