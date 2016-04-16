@@ -251,6 +251,11 @@ class JoinUsView(FormView):
     template_name = "enquiry.html"
     success_url = "/success"
 
+    def get_context_data(self, **kwargs):
+        context = super(JoinUsView, self).get_context_data(**kwargs)
+        context['url_path'] = 'join'
+        return context
+
     def get_initial(self):
         initials = dict()
         initials['region'] = self.request.GET.get('region', None)
