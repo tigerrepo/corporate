@@ -308,3 +308,12 @@ class SearchView(FormView):
 
 class SuccessView(TemplateView):
     template_name = "success.html"
+
+
+class SupportView(TemplateView):
+    template_name = "support.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(SupportView, self).get_context_data(**kwargs)
+        context['url_path'] = 'support'
+        return context
