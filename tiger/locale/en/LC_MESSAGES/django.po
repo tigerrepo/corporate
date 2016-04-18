@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-10 15:59+0800\n"
+"POT-Creation-Date: 2016-04-18 23:58+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 #: templates/company_detail.html:12 templates/enquiry.html.py:12
 #: templates/header.html:17 templates/pricing.html.py:12
 #: templates/product.html:12 templates/product_detail.html.py:13
-#: templates/search.html:12
+#: templates/search.html:12 templates/success.html.py:12
 msgid "HOME"
 msgstr ""
 
@@ -93,8 +93,12 @@ msgstr ""
 msgid "Contact info"
 msgstr ""
 
+#: templates/contact.html:105
+msgid "PDF Download"
+msgstr ""
+
 #: templates/enquiry.html:8 templates/enquiry.html.py:13
-#: templates/enquiry.html:25
+#: templates/enquiry.html:25 templates/header.html.py:32
 msgid "JOIN US"
 msgstr ""
 
@@ -120,18 +124,17 @@ msgstr ""
 
 #: templates/footer.html:10
 msgid ""
-"RICE Global is a streamlined and complete approach to engaging local and "
-"global audiences in a simple-to-use platform. With offices established in "
-"Singapore, China, and Indonesia, we know exactly how to allow your business "
-"to penetrate into the global markets."
+"RICE Global is a streamlined and complete platform that helps you engage "
+"your clients and market your products and services more effectively in four "
+"major areas: marketing consultation, content creation and management, "
+"exposure, leads generation and analysis. "
 msgstr ""
 
 #: templates/footer.html:15
 msgid ""
-"Together with our highly experienced consultants and creative team, we "
-"provide clients with fuss-free holistic solution - from marketing "
-"consultation, to content creation and management, to exposure and lead "
-"generation and analysis. "
+"With local offices strategically positioned over the world and a team of "
+"highly experienced consultants, RICE Global is the key to get your business "
+"selling in new foreign markets. "
 msgstr ""
 
 #: templates/footer.html:21
@@ -152,8 +155,16 @@ msgstr ""
 msgid "LEARN"
 msgstr ""
 
-#: templates/header.html:36
+#: templates/header.html:35
+msgid "SUPPORT"
+msgstr ""
+
+#: templates/header.html:43
 msgid "search..."
+msgstr ""
+
+#: templates/header.html:52
+msgid "Languages"
 msgstr ""
 
 #: templates/index.html:11
@@ -164,50 +175,168 @@ msgstr ""
 msgid "LATEST PRODUCTS"
 msgstr ""
 
+#: templates/pricing.html:26
+msgid "Multichannel Marketing Efforts"
+msgstr ""
+
+#: templates/pricing.html:28
+msgid ""
+"Our multichannel marketing strategy matters and it helps to better our "
+"business. Your potential clients could be anywhere and you need to be where "
+"they are. Our seamless approach will ensure that your valuable clients do "
+"not slip through the cracks."
+msgstr ""
+
 #: templates/pricing.html:31
-msgid "Professional corporate video (max 4 hours 1 day shoot at 1 location"
-msgstr ""
-
-#: templates/pricing.html:39
-msgid "Photo gallery for your products and services"
-msgstr ""
-
-#: templates/pricing.html:47
-msgid "Describe your products and services in words"
-msgstr ""
-
-#: templates/pricing.html:55
 msgid ""
-"Upload catalogues, promotion flyers, etc in PDF format for your customers to "
-"download"
+"Examples of channels include powerful YouTube exposure, search engine "
+"marketing, targeted industry-specific email marketing, social media, "
+"international marketplaces, trade shows and more. Tap into the power of our "
+"massive database and ever increasing business network to search for new "
+"opportunities now."
 msgstr ""
 
-#: templates/pricing.html:63
-msgid "Be featured on RiceGlobal's homepage for a wider exposure"
+#: templates/pricing.html:40
+msgid "3-Minute Corporate Video"
 msgstr ""
 
-#: templates/pricing.html:71
-msgid "Manage your content easily with our fuss-free user login access"
-msgstr ""
-
-#: templates/pricing.html:79
+#: templates/pricing.html:42
 msgid ""
-"Our businuss enquiry form will allow potential customers to get in touch "
-"with you easily"
+"Go beyond words and send your message across in a different way. When it "
+"comes to content, the main goal is to educate. Creating corporate video "
+"content will help you cater to a wider range of learners. For example, "
+"demonstration videos will appeal to those who prefer a more hands-on "
+"approach to consuming information."
 msgstr ""
 
-#: templates/pricing.html:87
-msgid "1-year digital exposure on RiceGlobal"
-msgstr ""
-
-#: templates/pricing.html:95
-msgid "Track customers' enquries easily with our platform"
-msgstr ""
-
-#: templates/pricing.html:103
+#: templates/pricing.html:45
 msgid ""
-"Professional translation services to reach out to global audiences are "
-"available at a separate cost"
+"Google loves video and its SERPs prioritise video results. Pages with video "
+"are 53x more likely to rank on the first page of Google search results. "
+"Shouldn’t you be capitalising on this? Besides, video is easy to share, "
+"especially on social media, which in turn helps to promote your business."
+msgstr ""
+
+#: templates/pricing.html:54
+msgid "Product/Service Gallery"
+msgstr ""
+
+#: templates/pricing.html:56
+msgid ""
+"Every business needs to familarise their clients with its products and "
+"services. Our easy-to-upload product/service gallery is a great way of doing "
+"so. By showcasing your products and services in photos, clients can form a "
+"vivid mental impression. Upload other information-packed images such as "
+"diagrams that further highlight the features of your products and services. "
+"Bring your clients closer to your products and services now with this "
+"unlimited feature."
+msgstr ""
+
+#: templates/pricing.html:65
+msgid "Product/Service Information"
+msgstr ""
+
+#: templates/pricing.html:67
+msgid ""
+"Solidify your CRM process with product and service descriptions that can "
+"help your potential clients make an informed purchasing decision. Sometimes, "
+"clients do not how your product or service can improve their lives and work "
+"processes until they read the descriptions. The descriptions can help to "
+"explain the benefits of your products and services and make your clients "
+"feel they definitely need to have them once they are done reading. Our "
+"highly experienced team of copywriters has come up with a set of general "
+"guidelines for writing product and service descriptions to get you started."
+msgstr ""
+
+#: templates/pricing.html:76
+msgid "Unlimited PDF Catalogue Download"
+msgstr ""
+
+#: templates/pricing.html:78
+msgid ""
+"Make your catalogues in handy PDF format for your clients to download and "
+"view anytime, anywhere. Gone are the days where businesses rely solely on "
+"print collaterals to distribute product and service information. This "
+"economical and environmentally friendly solution allows your clients to stay "
+"updated of latest products and services, promotions and news."
+msgstr ""
+
+#: templates/pricing.html:88
+msgid "User Login Access"
+msgstr ""
+
+#: templates/pricing.html:90
+msgid ""
+"Our platform’s content management is a pleasure to use, with no technical "
+"knowledge required. Simply login and get your content up and running in "
+"minutes. Experts from our development team keep the system constantly "
+"upgraded with latest technologies, useful features, functionality, security "
+"updates, bug fixes and improvements. This means that you can have a peace of "
+"mind and concentrate on running your business."
+msgstr ""
+
+#: templates/pricing.html:99
+msgid "Business Enquiry Form"
+msgstr ""
+
+#: templates/pricing.html:101
+msgid ""
+"This is the crucial point of interaction between your business and your "
+"clients. It is where clients come to connect directly with you. The simple "
+"design of the business enquiry form allows for greater conversion as it "
+"eliminates unnecessary form fields. The referral data you collect from the "
+"form is critical and our lead analysts are here to help you best put to use "
+"all that data."
+msgstr ""
+
+#: templates/pricing.html:110
+msgid "Enquiry Tracking"
+msgstr ""
+
+#: templates/pricing.html:112
+msgid ""
+"Our enquiry tracking system delivers all the enquires to your designated "
+"email account, allowing you to keep track of them anytime, anywhere. This "
+"means that you will be able to effectively reach your clients by working "
+"faster right inside your inbox. Start creating new deals on the fly right "
+"now."
+msgstr ""
+
+#: templates/pricing.html:120
+msgid "1-Year Digital Exposure"
+msgstr ""
+
+#: templates/pricing.html:122
+msgid ""
+"RICE Global is more than just a basic business directory. We are serious "
+"about our marketing efforts through multiple channels locally and globally. "
+"Get access to new business opportunities and grow your revenues. Hop on to "
+"RICE Global now and enjoy a 1-year digital exposure."
+msgstr ""
+
+#: templates/pricing.html:131
+msgid "Homepage Exposure"
+msgstr ""
+
+#: templates/pricing.html:133
+msgid ""
+"Showcase your best via our homepage leader board panel. By opting in to this "
+"feature for a small fee, your business gets to be in the limelight and be "
+"ahead of all your competitors."
+msgstr ""
+
+#: templates/pricing.html:142
+msgid "Translation Services"
+msgstr ""
+
+#: templates/pricing.html:144
+msgid ""
+"As your business goes global, language translation is very important. Our "
+"professional business language translation services are here to help you "
+"break language barriers and facilitate your overseas ambitions. A good "
+"translation can make a huge difference in how your content is received. Opt "
+"in to this additional feature for a small fee and start showcasing your "
+"potential to global audiences."
 msgstr ""
 
 #: templates/product_detail.html:47
@@ -234,12 +363,24 @@ msgstr ""
 msgid "Search for"
 msgstr ""
 
-#: templates/search.html:43
+#: templates/search.html:44 templates/search.html.py:45
 msgid "about"
 msgstr ""
 
-#: templates/search.html:43
-msgid "results found"
+#: templates/search.html:44
+msgid "companies found"
+msgstr ""
+
+#: templates/search.html:45
+msgid "products found"
+msgstr ""
+
+#: templates/search.html:50
+msgid "Company"
+msgstr ""
+
+#: templates/search.html:60
+msgid "Product"
 msgstr ""
 
 #: templates/slider.html:15
@@ -271,11 +412,37 @@ msgid "Be seen globally"
 msgstr ""
 
 #: templates/slider.html:85
-msgid "Maximise your outreach"
+msgid "Learn more about how RICE Global can help you maximise your outreach"
 msgstr ""
 
 #: templates/slider.html:89
 msgid "Kickstart Now"
+msgstr ""
+
+#: templates/success.html:8 templates/success.html.py:13
+msgid "MESSAGE"
+msgstr ""
+
+#: templates/success.html:24
+msgid ""
+"Congratulations, your message is sent successfully. Thank you for your "
+"supporting."
+msgstr ""
+
+#: templates/support.html:35
+msgid "RICE Global Support"
+msgstr ""
+
+#: templates/support.html:44
+msgid "Need help? Find it here."
+msgstr ""
+
+#: templates/support.html:56
+msgid "User Guide"
+msgstr ""
+
+#: templates/support.html:71
+msgid "Contact Us"
 msgstr ""
 
 #: templates/video.html:9

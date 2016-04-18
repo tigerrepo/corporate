@@ -14,5 +14,6 @@ urlpatterns = solid_i18n_patterns(
     url(r'^features', PriceView.as_view(), name='price-detail'),
     url(r'^search$', SearchView.as_view(), name='search'),
     url(r'^join$', JoinUsView.as_view(), name='kick-start'),
+    url(r'^support$', SupportView.as_view(), name='support'),
     url(r'^success$', SuccessView.as_view(), name='success'),
 )
