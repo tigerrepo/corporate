@@ -1,29 +1,110 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block content %}
-    <div class="breadcrumb-wrap">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h4>{% trans "SUPPORT" %}</h4>
-                </div>
-                <div class="col-sm-6 hidden-xs text-right">
-                    <ol class="breadcrumb">
-                        <li><a href='{% url "home" %}'>{% trans "HOME" %}</a></li>
-                        <li>{% trans "SUPPORT" %}</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
+    {#    <div class="breadcrumb-wrap">#}
+    {#        <div class="container">#}
+    {#            <div class="row">#}
+    {#                <div class="col-sm-6">#}
+    {#                    <h4>{% trans "SUPPORT" %}</h4>#}
+    {#                </div>#}
+    {#                <div class="col-sm-6 hidden-xs text-right">#}
+    {#                    <ol class="breadcrumb">#}
+    {#                        <li><a href='{% url "home" %}'>{% trans "HOME" %}</a></li>#}
+    {#                        <li>{% trans "SUPPORT" %}</li>#}
+    {#                    </ol>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
 
-    <div class="divide80"></div>
     <div class="container">
         <div class="row">
-            <div class="col-md-12 margin20">
-                {% trans "Congratulations, your message is sent successfully. Thank you for your supporting." %}
+            <div class="tp-banner">
+                <ul>
+                    <!-- SLIDE -->
+                    <li data-transition="fade" data-slotamount="5" data-masterspeed="1000">
+                        <!-- MAIN IMAGE -->
+                        <img src="/static/img/support-slice.jpg" data-bgfit="cover" data-bgposition="left top"
+                             data-bgrepeat="no-repeat">
+                        <div class="caption text-center-btm sft"
+                             data-x="50"
+                             data-y="260"
+                             data-speed="1000"
+                             data-start="1000"
+                             data-easing="easeOutExpo" style="font-size:2em;">
+                            {% trans "RICE Global Support" %}
+                        </div>
+
+                        <div class="caption title-2 sft"
+                             data-x="50"
+                             data-y="320"
+                             data-speed="1000"
+                             data-start="1800"
+                             data-easing="easeOutExpo">
+                            {% trans "Need help? Find it here." %}
+                        </div>
+
+                    </li>
+                </ul>
             </div>
         </div>
+
+        <div class="divide80"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="center-heading">
+                    <h2>{% trans "User Guide" %}</h2>
+                    <span class="center-line"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="js-video ">
+                <iframe width="1170" height="684" src="http://www.youtube.com/embed/C_3d6GntKbk?rel=0">
+                </iframe>
+            </div>
+        </div>
+        <div class="divide80"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="center-heading">
+                    <h2>{% trans "Contact Us" %}</h2>
+                    <span class="center-line"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+            <h5>Singapore (Headquarters)</h5>
+            <ul class="list-unstyled contact contact-info">
+                <li><p><strong><i class="fa fa-map-marker"></i></strong> <span style="margin-left: 5px;">18 Howard Road #08-11 Novelty Bizcentre Singapore 369585</span>
+                </p></li>
+                <li><p><strong><i class="fa fa-envelope"></i></strong> <a
+                        href="mailto:enquiries@riceglobal.com.sg">enquiries@riceglobal.com.sg</a></p></li>
+                <li><p><strong><i class="fa fa-phone"></i> </strong> +65 6702 3368</p></li>
+            </ul>
+                </div>
+            <div class="col-sm-4">
+            <h5>China</h5>
+            <ul class="list-unstyled contact contact-info">
+                <li><p><strong><i class="fa fa-map-marker"></i></strong> <span style="margin-left: 5px;">123 Road #01-23 China Tower Shanghai</span>
+                </p></li>
+                <li><p><strong><i class="fa fa-envelope"></i></strong> <a
+                        href="mailto:enquiries@riceglobal.com.cn">enquiries@riceglobal.com.cn</a></p></li>
+                <li><p><strong><i class="fa fa-phone"></i> </strong> +86 1234 5678</p></li>
+            </ul>
+                </div>
+            <div class="col-sm-4">
+            <h5>Indonesia</h5>
+            <ul class="list-unstyled contact contact-info">
+                <li><p><strong><i class="fa fa-map-marker"></i></strong> <span style="margin-left: 5px;">123 Road #01-23 Indonesia Tower Jakarta</span>
+                </p></li>
+                <li><p><strong><i class="fa fa-envelope"></i></strong> <a
+                        href="mailto:enquiries@riceglobal.com.sg">enquiries@riceglobal.com.sg</a></p></li>
+                <li><p><strong><i class="fa fa-phone"></i> </strong> +62 1234 5678</p></li>
+            </ul>
+                </div>
+        </div>
+        <div class="divide80"></div>
     </div>
-    <div class="divide80"></div>
 {% endblock %}
