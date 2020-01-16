@@ -17,23 +17,23 @@
                     <a href="{% url 'home' %}">{% trans "HOME" %} </a>
                 </li>
                 <li {% ifequal 'business' url_path %} class="active" {% endifequal %}>
-                    <a href="{% url 'company-list' %}">{% trans "INDUSTRIES" %} </a>
+                    <a href="{% url 'company-list' %}">{% trans "Flinters" %} </a>
                 </li>
                 <li {% ifequal 'product' url_path %} class="active" {% endifequal %}>
-                    <a href="{% url 'product-list' %}">{% trans "PRODUCTS" %} </a>
+                    <a href="{% url 'product-list' %}">{% trans "Thoughts" %} </a>
                 </li>
                 <li {% ifequal 'price' url_path %} class="active" {% endifequal %}>
-                    <a href="{% url 'price-detail' %}">{% trans "FEATURES" %} </a>
+                    <a href="{% url 'price-detail' %}">{% trans "Why Join" %} </a>
                 </li>
-                <li>
+                <!-- <li>
                     <a target="_blank" href="http://blog.riceglobal.com.sg">{% trans "LEARN" %} </a>
-                </li>
-                <li {% ifequal 'join' url_path %} class="active" {% endifequal %}>
+                </li> -->
+                <!-- <li {% ifequal 'join' url_path %} class="active" {% endifequal %}>
                     <a href="{% url 'kick-start' %}">{% trans "JOIN US" %} </a>
                 </li>
                 <li {% ifequal 'support' url_path %} class="active" {% endifequal %}>
                     <a href="{% url 'support' %}">{% trans "SUPPORT" %} </a>
-                </li>
+                </li> -->
                 <li>
                     <div class="pull-right">
                         <form action='{% url "search" %}' method="post" novalidate="">
@@ -47,7 +47,7 @@
                     </div>
                 </li>
 
-                <li class="dropdown">
+                <!-- <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">{% trans "Languages" %} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -59,7 +59,7 @@
                             <li><a class="lang_active" href="{{ request.get_full_path }}">中文</a></li>
                         {% endif %}
                     </ul>
-                </li>
+                </li> -->
 
             </ul>
         </div>

@@ -8,7 +8,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="center-heading">
-        <h2>{% trans "FEATURED COMPANIES" %}</h2>
+        <h2>{% trans "LATEST FLINTERS" %}</h2>
         <span class="center-line"></span>
       </div>
     </div>
@@ -25,7 +25,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="center-heading">
-        <h2>{% trans "LATEST PRODUCTS" %}</h2>
+        <h2>{% trans "What the Flinters are thinking..." %}</h2>
         <span class="center-line"></span>
       </div>
     </div>
@@ -46,7 +46,7 @@
         <div class="news-desc">
           <span>{{product.name}}</span>
           <h4><a href="{% url 'company-detail' product.company_url%}">{{product.company_name}}</a></h4>
-          <!-- <span>on {{product.create_date}}</span> <span><a href="{% url 'product-detail' product.id%}">Read more...</a></span> -->
+          <span>on {{product.create_date}}</span> <span><a href="{% url 'product-detail' product.id%}">Read more...</a></span>
         </div>
         <!--news desc-->
       </div>
