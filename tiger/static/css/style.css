@@ -4985,7 +4985,7 @@ table.shopping-cart-table tr th, table.shopping-cart-table tr td {
 }
 
 .intro-text-1 {
-  background: #F2632B;
+  background: #00AFEF;
   padding: 40px 0;
 }
 
@@ -6004,7 +6004,7 @@ table.shopping-cart-table tr th, table.shopping-cart-table tr td {
 .feature-words-1{
   width: 400px;
   top: 60px;
-  left: -250px;
+  left: -280px;
   position: relative;
   margin:0 auto;
 }
@@ -6030,7 +6030,7 @@ table.shopping-cart-table tr th, table.shopping-cart-table tr td {
 .feature-words-3{
   margin:0 auto;
   width: 500px;
-  top: 70px;
+  top: 130px;
   position: relative;
   left:200px;
 }
@@ -6049,7 +6049,7 @@ table.shopping-cart-table tr th, table.shopping-cart-table tr td {
 .feature-words-4{
   margin:0 auto;
   width: 500px;
-  top: 60px;
+  top: 100px;
   position: relative;
   left: -170px;
 }
@@ -6066,7 +6066,7 @@ table.shopping-cart-table tr th, table.shopping-cart-table tr td {
 .feature-words-5{
   margin:0 auto;
   width: 500px;
-  top: 70px;
+  top: 85px;
   position: relative;
   left: 170px;
 }
@@ -6107,7 +6107,7 @@ table.shopping-cart-table tr th, table.shopping-cart-table tr td {
   width: 400px;
   top: 70px;
   position: relative;
-  left: -220px;
+  left: -280px;
 }
 .feature-bg-9{
   background:#ffffff url(../img/slice_09.png) no-repeat;
@@ -6139,7 +6139,7 @@ table.shopping-cart-table tr th, table.shopping-cart-table tr td {
   margin:0 auto;
   width: 400px;
   position: relative;
-  top: 180px;
+  top: 160px;
 }
 .feature-words-10 p{
   font-size: larger;
