@@ -444,7 +444,7 @@ p.sub-text {
 }
 
 .navbar-right{
-  margin-top: 15px;
+  margin-top: 0px;
 }
 
 .navbar-brand {
@@ -4985,7 +4985,7 @@ table.shopping-cart-table tr th, table.shopping-cart-table tr td {
 }
 
 .intro-text-1 {
-  background: #00AFEF;
+  background: #123154;
   padding: 40px 0;
 }
 
