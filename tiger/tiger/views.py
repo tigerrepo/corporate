@@ -33,16 +33,16 @@ class IndexView(TemplateView):
         for item in models.CompanyTag.objects.all():
             company_tag_dict[item.company_id].append(item.tag.name)
 
-        company_video_dict = {}
-        for video in models.Video.objects.all():
-            company_video_dict[video.company_id] = (video.host_url, video.video_url, video.name)
+        # company_video_dict = {}
+        # for video in models.Video.objects.all():
+        #     company_video_dict[video.company_id] = (video.host_url, video.video_url, video.name)
         company_list = []
         for company in companies:
             company_dict = model_to_dict(company)
             company_dict['tag'] = ','.join(company_tag_dict.get(company.id, ['Others']))
-            video_tuple = company_video_dict.get(company.id, ('', '', ''))
-            company_dict['video_host_url'] = "%s%s" % (settings.VIDEO_URL, video_tuple[0])
-            company_dict['youtube_url'] = "%s%s?rel=0" % (settings.YOUTUBE_URL_PREFIX, video_tuple[2])
+            # video_tuple = company_video_dict.get(company.id, ('', '', ''))
+            # company_dict['video_host_url'] = "%s%s" % (settings.VIDEO_URL, video_tuple[0])
+            # company_dict['youtube_url'] = "%s%s?rel=0" % (settings.YOUTUBE_URL_PREFIX, video_tuple[2])
             company_list.append(company_dict)
 
         products = [obj for obj in

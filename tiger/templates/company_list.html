@@ -1,5 +1,12 @@
-<div id="grid-container" class="cbp">
   {% for company in companies %}
-    {% include "video.html" %}
+  <div class="col-sm-4 margin30" style="background:red;">
+    <div>
+      <a href='{% url "company-detail" company.name %}' target="_blank">
+        <div class="item-img-wrap">
+          {{company.address}} 
+          
+        </div>
+      </a>
+      </div>
+  </div>
   {% endfor %}
-</div>
