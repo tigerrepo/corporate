@@ -6,7 +6,7 @@ from views import *
 urlpatterns = solid_i18n_patterns(
     '',
     url(r'^index$', IndexView.as_view(), name='home'),
-    url(r'^flinter/(?P<company_name>\w+)$', CompanyDetailView.as_view(), name='company-detail'),
+    url(r'^flinter/(?P<company_id>\w+)$', CompanyDetailView.as_view(), name='company-detail'),
     url(r'^flinters$', CompanyListView.as_view(), name='company-list'),
     url(r'^thoughts$', ProductListView.as_view(), name='product-list'),
     url(r'^thought/(?P<pk>\d+)$', ProductDetailView.as_view(), name='product-detail'),

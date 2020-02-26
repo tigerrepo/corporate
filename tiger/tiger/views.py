@@ -76,24 +76,23 @@ class CompanyDetailView(FormView):
     def get_context_data(self, **kwargs):
         context = super(CompanyDetailView, self).get_context_data(**kwargs)
 
-        company_url = self.kwargs['company_name']
-        company = get_object_or_404(models.Company, url=company_url, status=1)
+        company_id = self.kwargs['company_id']
+        company = get_object_or_404(models.Company, id=company_id, status=1)
         if company.status != models.Account.STATUS_ENABLE:
             raise Http404
         context['company'] = company
-        try:
-            video = models.Video.objects.get(company=company)
-            context['youtube_url'] = "%s%s?rel=0" % (settings.YOUTUBE_URL_PREFIX, video.name)
-        except models.Video.DoesNotExist:
-            context['youtube_url'] = ""
+        # try:
+        #     video = models.Video.objects.get(company=company)
+        #     context['youtube_url'] = "%s%s?rel=0" % (settings.YOUTUBE_URL_PREFIX, video.name)
+        # except models.Video.DoesNotExist:
+        #     context['youtube_url'] = ""
 
-        pdfs = models.PDF.objects.filter(company=company, status=1)
-        pdf_urls = []
-        for pdf in pdfs:
-            pdf_url = "%s%s/%s" % (settings.PDF_URL, company.id, pdf.url)
-            pdf_urls.append((pdf_url, pdf.name))
-        context['pdf_urls'] = pdf_urls
-        print pdf_urls
+        # pdfs = models.PDF.objects.filter(company=company, status=1)
+        # pdf_urls = []
+        # for pdf in pdfs:
+        #     pdf_url = "%s%s/%s" % (settings.PDF_URL, company.id, pdf.url)
+        #     pdf_urls.append((pdf_url, pdf.name))
+        # context['pdf_urls'] = pdf_urls
         if company.logo_url:
             context['logo_url'] = "%s%s/%s" % (settings.LOGO_URL, company.id, company.logo_url)
         else:

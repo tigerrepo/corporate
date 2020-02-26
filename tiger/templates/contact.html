@@ -85,11 +85,11 @@
             <h3 class="heading">{% trans "Contact info" %}</h3>
             <ul class="list-unstyled contact contact-info">
 
-                <li><p><strong><i class="fa fa-map-marker"></i></strong> <span style="margin-left: 5px;">{{ company.address }}</span>
-                </p></li>
+                <!-- <li><p><strong><i class="fa fa-map-marker"></i></strong> <span style="margin-left: 5px;">{{ company.address }}</span>
+                </p></li> -->
                 <li><p><strong><i class="fa fa-envelope"></i></strong> <a
                         href="mailto:{{ company.email }}">{{ company.email }}</a></p></li>
-                <li><p><strong><i class="fa fa-phone"></i> </strong> {{ company.tel }}</p></li>
+                <!-- <li><p><strong><i class="fa fa-phone"></i> </strong> {{ company.tel }}</p></li>
                 {% if company.tel_opt != "" %}
                     <li><p><strong><i class="fa fa-phone"></i> </strong> {{ company.tel_opt }}</p></li>
                 {% endif %}
@@ -99,10 +99,10 @@
                 {% endif %}
                 {% if company.fax != "" %}
                     <li><p><strong><i class="fa fa-print"></i></strong> {{ company.fax }}</p></li>
-                {% endif %}
+                {% endif %} -->
             </ul>
             <div class="divide40"></div>
-            <h3 class="heading">{% trans "Feel Free to Download" %}</h3>
+            <!-- <h3 class="heading">{% trans "Feel Free to Download" %}</h3>
             <ul class="list-unstyled">
                 {% for pdf, name in pdf_urls %}
                     <li style="margin-bottom: 5px;">
@@ -110,7 +110,7 @@
                         <a href="{{ pdf }}" style="text-decoration: underline;color:#00afef;">{{ name }}</a>
                     </li>
                 {% endfor %}
-            </ul>
+            </ul> -->
 
             <!--<h4>Get social</h4>-->
             <!--<ul class="list-inline social-1">-->
