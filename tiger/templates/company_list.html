@@ -2,7 +2,7 @@
   
   {% for company in companies %}
   <div class="col-sm-4 margin30" >
-    <a style="background-image:url('/static/img/cap-bg.png'); width:360px; height:213px; display: inline-block;padding-top: 50px;
+    <a style="background-image:url('/static/img/cap-bg.png'); width:360px; height:213px; display: inline-block;padding: 50px 30px 20px 30px;
     font-size: 24px; text-align: center;" href='{% url "company-detail" company.id %}'>
           {{company.address}} 
   </a>
