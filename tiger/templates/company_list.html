@@ -1,12 +1,10 @@
+  
+  
   {% for company in companies %}
-  <div class="col-sm-4 margin30" style="background:red;">
-    <div>
-      <a href='{% url "company-detail" company.name %}' target="_blank">
-        <div class="item-img-wrap">
+  <div class="col-sm-4 margin30" >
+    <a style="background-image:url('/static/img/cap-bg.png'); width:360px; height:213px; display: inline-block;padding-top: 50px;
+    font-size: 24px; text-align: center;" href='{% url "company-detail" company.name %}'>
           {{company.address}} 
-          
-        </div>
-      </a>
-      </div>
+  </a>
   </div>
-  {% endfor %}
+  {% endfor %}  
