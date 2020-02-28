@@ -27,7 +27,7 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         companies = models.Company.objects.\
-            filter(status=models.Account.STATUS_ENABLE, is_index=True).order_by("dis_order")
+            filter(status=models.Account.STATUS_ENABLE, is_index=True).order_by("dis_order")[0:9]
 
         company_tag_dict = collections.defaultdict(list)
         for item in models.CompanyTag.objects.all():
@@ -132,25 +132,27 @@ class CompanyListView(TemplateView):
             if item.company.status == models.Account.STATUS_ENABLE:
                 tag_company_dict[item.tag_id].append(item.company_id)
 
-        company_video_dict = {}
-        for video in models.Video.objects.all():
-            company_video_dict[video.company_id] = (video.host_url, video.video_url, video.name)
+        # company_video_dict = {}
+        # for video in models.Video.objects.all():
+        #     company_video_dict[video.company_id] = (video.host_url, video.video_url, video.name)
 
         tags = models.Tag.objects.filter(status=1)
-        companies = models.Company.objects.filter(status=1).order_by('name')
+        companies = models.Company.objects.filter(status=1).order_by('-id')
         company_list = []
 
         for company in companies:
             company_dict = model_to_dict(company)
             company_dict['tag_list'] = ' '.join(company_tag_dict.get(company.id, ['Others']))
             company_dict['tag_line'] = ', '.join(company_tagname_dict.get(company.id, ['Others']))
-            video_tuple = company_video_dict.get(company.id, ('', '', ''))
-            company_dict['youtube_url'] = "%s%s?rel=0" % (settings.YOUTUBE_URL_PREFIX, video_tuple[2])
+            # video_tuple = company_video_dict.get(company.id, ('', '', ''))
+            # company_dict['youtube_url'] = "%s%s?rel=0" % (settings.YOUTUBE_URL_PREFIX, video_tuple[2])
             company_list.append(company_dict)
         context['tags'] = [tag for tag in tags if tag_company_dict.get(tag.id, [])]
         context['companies'] = company_list
         context['url_path'] = 'business'
         logger.info("data:%s", context)
+
+        print tags
         return context
 
 

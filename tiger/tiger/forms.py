@@ -46,9 +46,9 @@ class JoinUsForm(forms.ModelForm):
             field.field.widget.attrs['class'] = 'form-control'
 
         self.fields['name'].widget.attrs['placeholder'] = 'Please input your name'
-        self.fields['company'].widget.attrs['placeholder'] = 'Please input the company name'
-        self.fields['mobile'].widget.attrs['placeholder'] = 'Please input the contact number'
-        self.fields['email'].widget.attrs['placeholder'] = 'Please input the company email'
+        self.fields['company'].widget.attrs['placeholder'] = 'Please input payment reference number or NA if not applicable'
+        self.fields['mobile'].widget.attrs['placeholder'] = 'Please input your contact number'
+        self.fields['email'].widget.attrs['placeholder'] = 'Please input your email'
         self.fields['remarks'].widget.attrs['placeholder'] = 'Any other information you want us to know'
         self.fields['remarks'].required = False
 
