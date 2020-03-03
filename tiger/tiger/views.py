@@ -57,7 +57,7 @@ class IndexView(TemplateView):
             except models.Gallery.DoesNotExist:
                 cover_image = '%sdefault.jpg' % settings.IMAGE_URL_PREFIX
             product_dict['cover_image'] = cover_image
-            product_dict['company_name'] = product.company.name
+            product_dict['company_id'] = product.company.id
             product_dict['company_url'] = product.company.url
             product_dict['create_date'] = product.create_date
             product_list.append(product_dict)
