@@ -5992,9 +5992,6 @@ table.shopping-cart-table tr th, table.shopping-cart-table tr td {
 .feature-block{
   position: relative;
 }
-.feature-block p {
-  font-size: 16px;
-}
 .feature-bg-1{
   background:#ffffff url(../img/01-min.jpg) no-repeat;
   width: 1000px;
