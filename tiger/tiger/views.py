@@ -60,6 +60,7 @@ class IndexView(TemplateView):
             product_dict['company_id'] = product.company.id
             product_dict['company_url'] = product.company.url
             product_dict['create_date'] = product.create_date
+            product_dict['company_name'] = product.company.name
             product_list.append(product_dict)
 
         context['domain'] = settings.IMAGE_URL_PREFIX
@@ -194,14 +195,6 @@ class ProductListView(TemplateView):
             product_dict['create_date'] = product.create_date
             product_list.append(product_dict)
 
-        # paginator = Paginator(product_list, settings.PAGE_COUNT)
-        # page = self.request.GET.get('page')
-        # try:
-        #     product_list = paginator.page(page)
-        # except PageNotAnInteger:
-        #     product_list = paginator.page(1)
-        # except EmptyPage:
-        #     product_list = paginator.page(paginator.num_pages)
         tags = models.Tag.objects.filter(status=1)
         context['tags'] = [tag for tag in tags if tag_company_dict.get(tag.id, [])]
         context['products'] = product_list
