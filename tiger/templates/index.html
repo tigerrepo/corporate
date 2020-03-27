@@ -43,7 +43,7 @@
         <!--news link--> 
         <div class="news-desc">
           <span>{{product.name}}</span>
-          <span><a href="{% url 'company-detail' product.company_id%}">{{product.company_name}}</a></span> <span><a href="{% url 'product-detail' product.id%}">Read more...</a></span>
+          <span style="float: left;"> <a href="{% url 'company-detail' product.company_id%}">{{product.company_name}}</a>on {{product.create_date}}</span> <span><a href="{% url 'product-detail' product.id%}">Read more...</a></span>
         </div>
         <!--news desc-->
       </div>
