@@ -16,4 +16,5 @@ urlpatterns = solid_i18n_patterns(
     url(r'^join$', JoinUsView.as_view(), name='kick-start'),
     url(r'^support$', SupportView.as_view(), name='support'),
     url(r'^success$', SuccessView.as_view(), name='success'),
+    url(r'^privacy$', PrivacyView.as_view(), name='privacy'),
 )

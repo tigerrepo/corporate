@@ -311,3 +311,11 @@ class SupportView(TemplateView):
         context = super(SupportView, self).get_context_data(**kwargs)
         context['url_path'] = 'support'
         return context
+
+class PrivacyView(TemplateView):
+    template_name = "privacy.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(PrivacyView, self).get_context_data(**kwargs)
+        context['url_path'] = 'privacy'
+        return context
