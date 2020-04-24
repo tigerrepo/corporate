@@ -1,19 +1,24 @@
 {% load i18n %}
 <div class="cbp-item {{company.tag_list}}">
-  {% if forloop.counter == 1 or forloop.counter == 5 or forloop.counter == 9 %}
-  <a style="background-image:url('/static/img/quote-bg-g.png'); width:360px; height:213px; display: inline-block;padding: 50px 30px 20px 30px;
+  {% if company.bg == 1 %}
+  <a style="background-image:url('/static/img/quote-bg-g.png'); width:360px; height:213px; display: inline-block;padding: 50px 30px 20px 30px; position: relative;
   font-size: 24px; text-align: center;" href='{% url "company-detail" company.id %}'>
-        {{company.url}} 
+        <span style="display: inline-block;">{{company.url}} </span>
+        <span style="display: block; position: absolute; bottom: 30px; right: 30px;">{{company.account}}</span>
   </a>
-  {% elif forloop.counter == 2 or forloop.counter == 6 or forloop.counter == 7 %}
-  <a style="background-image:url('/static/img/quote-bg-b.png'); width:360px; height:213px; display: inline-block;padding: 50px 30px 20px 30px;
+  
+  {% elif company.bg == 2 %}
+  <a style="background-image:url('/static/img/quote-bg-b.png'); width:360px; height:213px; display: inline-block;padding: 50px 30px 20px 30px; position: relative;
         font-size: 24px; text-align: center; color: white;" href='{% url "company-detail" company.id %}'>
-        {{company.url}} 
+       <span style="display: inline-block;">{{company.url}} </span>
+       <span style="display: block; position: absolute; bottom: 30px; right: 30px;">{{company.account}}</span>
   </a>
-  {% elif forloop.counter == 3 or forloop.counter == 4 or forloop.counter == 8 %}
-  <a style="background-image:url('/static/img/quote-bg-o.png'); width:360px; height:213px; display: inline-block;padding: 50px 30px 20px 30px;
+  
+  {% elif company.bg == 3 %}
+  <a style="background-image:url('/static/img/quote-bg-o.png'); width:360px; height:213px; display: inline-block;padding: 50px 30px 20px 30px; position: relative;
         font-size: 24px; text-align: center; color:white;" href='{% url "company-detail" company.id %}'>
-        {{company.url}} 
+       <span style="display: inline-block;">{{company.url}} </span>
+       <span style="display: block; position: absolute; bottom: 30px; right: 30px;">{{company.account}}</span>
   </a>
   {% endif %}
   </div>

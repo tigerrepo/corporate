@@ -12,6 +12,7 @@ import models
 import settings
 import logging
 import collections
+import random
 
 # from django.utils.timezone import localtime, now
 # from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
@@ -26,6 +27,12 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
+
+        accounts = models.Account.objects.filter(status=models.Account.STATUS_ENABLE)
+        account_dict = {}
+        for account in accounts:
+            account_dict[account.id] = account.username
+
         companies = models.Company.objects.\
             filter(status=models.Account.STATUS_ENABLE, is_index=True).order_by("dis_order")[0:9]
 
@@ -40,6 +47,7 @@ class IndexView(TemplateView):
         for company in companies:
             company_dict = model_to_dict(company)
             company_dict['tag'] = ','.join(company_tag_dict.get(company.id, ['Others']))
+            company_dict['account'] = account_dict.get(company.id, '')
             # video_tuple = company_video_dict.get(company.id, ('', '', ''))
             # company_dict['video_host_url'] = "%s%s" % (settings.VIDEO_URL, video_tuple[0])
             # company_dict['youtube_url'] = "%s%s?rel=0" % (settings.YOUTUBE_URL_PREFIX, video_tuple[2])
@@ -123,6 +131,11 @@ class CompanyListView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(CompanyListView, self).get_context_data(**kwargs)
 
+        accounts = models.Account.objects.filter(status=models.Account.STATUS_ENABLE)
+        account_dict = {}
+        for account in accounts:
+            account_dict[account.id] = account.username
+
         company_tag_dict = collections.defaultdict(list)
         company_tagname_dict = collections.defaultdict(list)
         tag_company_dict = collections.defaultdict(list)
@@ -142,9 +155,18 @@ class CompanyListView(TemplateView):
         company_list = []
 
         for company in companies:
+            t = random.randint(0,11)
             company_dict = model_to_dict(company)
             company_dict['tag_list'] = ' '.join(company_tag_dict.get(company.id, ['Others']))
             company_dict['tag_line'] = ', '.join(company_tagname_dict.get(company.id, ['Others']))
+            company_dict['account'] = account_dict.get(company.id, '')
+            
+            if t <= 3:
+                company_dict['bg'] = 1
+            elif 4 <= t <= 7:
+                company_dict['bg'] = 2
+            else:
+                company_dict['bg'] = 3
             # video_tuple = company_video_dict.get(company.id, ('', '', ''))
             # company_dict['youtube_url'] = "%s%s?rel=0" % (settings.YOUTUBE_URL_PREFIX, video_tuple[2])
             company_list.append(company_dict)
