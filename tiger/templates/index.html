@@ -21,21 +21,21 @@
         <a style="background-image:url('/static/img/quote-bg-g.png'); width:360px; height:213px; display: inline-block;padding: 50px 30px 20px 30px; position: relative;
         font-size: 24px; text-align: center;" href='{% url "company-detail" company.id %}'>
               <span style="display: inline-block;">{{company.url}} </span>
-              <span style="display: block; position: absolute; bottom: 30px; right: 30px;">{{company.account}}</span>
+              <span style="display: block; position: absolute; bottom: 30px; right: 30px;">{{company.name}}</span>
         </a>
         
         {% elif forloop.counter == 2 or forloop.counter == 6 or forloop.counter == 7 %}
         <a style="background-image:url('/static/img/quote-bg-b.png'); width:360px; height:213px; display: inline-block;padding: 50px 30px 20px 30px; position: relative;
               font-size: 24px; text-align: center; color: white;" href='{% url "company-detail" company.id %}'>
              <span style="display: inline-block;">{{company.url}} </span>
-             <span style="display: block; position: absolute; bottom: 30px; right: 30px;">{{company.account}}</span>
+             <span style="display: block; position: absolute; bottom: 30px; right: 30px;">{{company.name}}</span>
         </a>
         
         {% elif forloop.counter == 3 or forloop.counter == 4 or forloop.counter == 8 %}
         <a style="background-image:url('/static/img/quote-bg-o.png'); width:360px; height:213px; display: inline-block;padding: 50px 30px 20px 30px; position: relative;
               font-size: 24px; text-align: center; color:white;" href='{% url "company-detail" company.id %}'>
              <span style="display: inline-block;">{{company.url}} </span>
-             <span style="display: block; position: absolute; bottom: 30px; right: 30px;">{{company.account}}</span>
+             <span style="display: block; position: absolute; bottom: 30px; right: 30px;">{{company.name}}</span>
         </a>
         {% endif %}
         </div>
