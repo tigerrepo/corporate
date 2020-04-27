@@ -27,9 +27,8 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-
         companies = models.Company.objects.\
-            filter(status=models.Account.STATUS_ENABLE, is_index=True).order_by("dis_order")[0:9]
+            filter(status=models.Account.STATUS_ENABLE).order_by('-id')[0:9]
 
         company_tag_dict = collections.defaultdict(list)
         for item in models.CompanyTag.objects.all():
